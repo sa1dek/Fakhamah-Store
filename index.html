@@ -1,0 +1,289 @@
+<!-- ============================================
+FILE: index.html
+============================================ -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAKHAMAH | Luxury Perfumes Egypt</title>
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/t4pyxgRD/Logo.png">
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- NAVBAR (same across all pages) -->
+    <nav class="navbar" id="navbar">
+      <a href="index.html" class="nav-brand">FAKHAMAH</a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="index.html#categories">Categories</a></li>
+        <!-- <li><a href="index.html#reviews">Reviews</a></li> -->
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-icons">
+        <!-- <button class="icon-btn" id="searchBtn" aria-label="Search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button> -->
+        <a
+          href="checkout.html"
+          class="icon-btn cart-icon-btn"
+          aria-label="Cart"
+        >
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="index.html#categories">Categories</a>
+      <!-- <a href="index.html#reviews">Reviews</a> -->
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#about">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-particles" id="heroParticles"></div>
+      <div class="hero-content">
+        <span class="hero-badge">✦ Luxury Perfumes ✦</span>
+        <h1>
+          Every Bottle Has A<br /><span class="gold-text"
+            >Story Worth Telling</span
+          >
+        </h1>
+        <!-- <p class="hero-subtitle">Curated niche and designer fragrances delivered across Egypt.</p> -->
+        <div class="hero-buttons">
+          <a href="shop.html" class="btn btn-gold">Shop Now</a>
+          <a href="index.html#categories" class="btn btn-outline"
+            >Explore Collection</a
+          >
+        </div>
+      </div>
+      <!-- <div class="floating-bottle">🫧</div> -->
+      <div class="floating-bottle">
+        <img src="https://i.postimg.cc/t4pyxgRD/Logo.png" alt="Perfume Bottle" />
+      </div>
+    </section>
+
+    <!-- FEATURED PRODUCTS (mini slider) -->
+    <section class="section products-section" id="shop">
+      <div class="section-header reveal">
+        <span class="section-tag">Featured Collection</span>
+        <h2 class="section-title">Bestselling Fragrances</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="slider-container reveal">
+        <button class="slider-arrow prev" id="sliderPrev">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <div class="slider-track-wrapper">
+          <div class="slider-track" id="sliderTrack"></div>
+        </div>
+        <button class="slider-arrow next" id="sliderNext">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <div class="slider-dots" id="sliderDots"></div>
+      </div>
+    </section>
+
+    <!-- SHOP BY CATEGORY -->
+    <section class="section" id="categories">
+      <div class="section-header reveal">
+        <span class="section-tag">Browse By</span>
+        <h2 class="section-title">Shop By Category</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="categories-grid reveal">
+        <div class="category-card">
+          <img src="https://i.postimg.cc/jqLpw7HW/Per1.jpg" alt="For Him" />
+          <div class="category-overlay">
+            <h3>For Him</h3>
+            <a href="shop.html" class="btn btn-gold">Shop Now</a>
+          </div>
+        </div>
+        <div class="category-card">
+          <img src="https://i.postimg.cc/FHg85g4g/Per2.jpg" alt="For Her" />
+          <div class="category-overlay">
+            <h3>For Her</h3>
+            <a href="shop.html" class="btn btn-gold">Shop Now</a>
+          </div>
+        </div>
+        <div class="category-card">
+          <img src="https://i.postimg.cc/vm0KDYDg/Per3.jpg" alt="Unisex" />
+          <div class="category-overlay">
+            <h3>Unisex</h3>
+            <a href="shop.html" class="btn btn-gold">Shop Now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section class="section why-us-section">
+      <div class="section-header reveal">
+        <span class="section-tag">Why FAKHAMAH</span>
+        <h2 class="section-title">Why Choose Us</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="features-grid reveal">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <h3>Guaranteed Performance</h3>
+          <p>Long-lasting projection with premium oil concentration.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-gift"></i></div>
+          <h3>Premium Packaging</h3>
+          <p>Elegant gift-ready presentation.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-droplet"></i></div>
+          <h3>Premium Imported Oils</h3>
+          <p>Sourced from the world's finest perfumeries.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS COUNTER -->
+    <section class="stats-section" id="stats">
+      <div class="stats-grid reveal">
+        <div class="stat-item">
+          <span class="stat-number" data-target="30000">0</span
+          ><span class="stat-label">Happy Customers</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="5">0</span
+          ><span class="stat-label">Star Reviews</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="150">0</span
+          ><span class="stat-label">Influencer Approved</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="100">0</span
+          ><span class="stat-label">Fast Delivery</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <!-- <section class="section testimonials-section" id="reviews">
+      <div class="section-header reveal">
+        <span class="section-tag">Testimonials</span>
+        <h2 class="section-title">What Our Customers Say</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="testimonials-carousel reveal">
+        <div class="testimonials-track" id="testimonialsTrack"></div>
+        <div class="testimonial-dots" id="testimonialDots"></div>
+      </div>
+    </section> -->
+
+    <!-- COMPARISON SLIDER -->
+    <!-- <section class="section comparison-section">
+      <div class="section-header reveal">
+        <span class="section-tag">The Difference</span>
+        <h2 class="section-title">Before vs After — The FAKHAMAH Difference</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="comparison-container reveal" id="comparisonContainer">
+        <div class="comparison-img comparison-before">
+          <div class="comparison-content">
+            <div class="big-icon">📦</div>
+            <p style="color: #aaa">Generic Presentation</p>
+          </div>
+          <span class="comparison-label">Other Brands</span>
+        </div>
+        <div class="comparison-img comparison-after" id="comparisonAfter">
+          <div class="comparison-content">
+            <div class="big-icon">✨</div>
+            <p style="color: var(--gold)">Luxury Experience</p>
+          </div>
+          <span class="comparison-label">FAKHAMAH</span>
+        </div>
+        <div class="comparison-handle" id="comparisonHandle">
+          <div class="comparison-handle-circle">
+            <i class="fa-solid fa-arrows-left-right"></i>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- FAQ -->
+    <section class="section faq-section" id="faq">
+      <div class="section-header reveal">
+        <span class="section-tag">Help Center</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="faq-container reveal" id="faqContainer"></div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about-section" id="about">
+      <div class="section-header reveal">
+        <span class="section-tag">Our Story</span>
+        <h2 class="section-title">About FAKHAMAH</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="about-content reveal">
+        <p>
+          At <strong style="color: var(--gold)">FAKHAMAH</strong>, we believe
+          luxury should be accessible. Our passion for fine fragrances drives us
+          to craft exceptional perfumes inspired by the world's most iconic
+          scents — using only premium imported oils.
+        </p>
+        <div class="about-highlights">
+          <span class="about-highlight">Premium Oils</span
+          ><span class="about-highlight">Long-Lasting</span
+          ><span class="about-highlight">Elegant Design</span
+          ><span class="about-highlight">Affordable Luxury</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <!-- <section class="newsletter-section" id="contact">
+      <div class="section-header reveal">
+        <span class="section-tag">Stay Connected</span>
+        <h2 class="section-title">Subscribe For Exclusive Offers</h2>
+        <div class="section-line"></div>
+      </div>
+      <form class="newsletter-form reveal" id="newsletterForm">
+        <input type="email" placeholder="Enter your email" required />
+        <button type="submit" class="btn btn-gold">Subscribe</button>
+      </form>
+      <p class="newsletter-success" id="newsletterSuccess">
+        ✓ Thank you! You're now subscribed.
+      </p>
+    </section> -->
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-grid"><!-- same as before --></div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 FAKHAMAH. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

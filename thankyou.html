@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You | FAKHAMAH</title>
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/t4pyxgRD/Logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background: var(--bg-primary);
+            flex-direction: column;
+        }
+        .thankyou-container {
+            text-align: center;
+            animation: fadeInUp 0.8s ease;
+        }
+        .thankyou-icon {
+            font-size: 6rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            animation: scaleIn 0.6s ease 0.2s both;
+        }
+        .thankyou-title {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            color: #fff;
+            letter-spacing: 6px;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+        .thankyou-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes scaleIn {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="thankyou-container">
+        <div class="thankyou-icon">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <h1 class="thankyou-title">Thank You</h1>
+        <p class="thankyou-subtitle">Your order has been placed successfully</p>
+        <a href="shop.html" class="btn btn-gold">
+            <i class="fa-solid fa-bag-shopping"></i> Order Again
+        </a>
+    </div>
+</body>
+</html>

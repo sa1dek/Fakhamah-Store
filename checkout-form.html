@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Complete Your Order | FAKHAMAH</title>
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/t4pyxgRD/Logo.png">
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+      <a href="index.html" class="nav-brand">FAKHAMAH</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="index.html#categories">Categories</a></li>
+        <!-- <li><a href="index.html#reviews">Reviews</a></li> -->
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-icons">
+        <button class="icon-btn">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        <a href="checkout.html" class="icon-btn cart-icon-btn">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+        <button class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="index.html#categories">Categories</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#reviews">Reviews</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <main style="padding: 8rem 2rem 4rem; max-width: 600px; margin: 0 auto">
+      <div class="section-header reveal">
+        <span class="section-tag">Delivery Details</span>
+        <h2 class="section-title">Complete Your Order</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div
+        id="orderPreview"
+        style="
+          background: var(--glass-bg);
+          border-radius: var(--radius-lg);
+          padding: 1.5rem;
+          margin-bottom: 2rem;
+        "
+      ></div>
+
+      <form
+        id="detailedCheckoutForm"
+        class="checkout-form"
+        style="
+          background: var(--glass-bg);
+          border-radius: var(--radius-lg);
+          padding: 2.5rem;
+          display: none;
+        "
+      >
+        <div style="margin-bottom: 1rem">
+          <label
+            style="
+              display: block;
+              margin-bottom: 0.5rem;
+              color: var(--text-secondary);
+            "
+            >Full Name *</label
+          >
+          <input
+            type="text"
+            id="fullName"
+            placeholder="Enter your full name"
+            required
+            style="width: 100%"
+          />
+        </div>
+        <div style="margin-bottom: 1rem">
+          <label
+            style="
+              display: block;
+              margin-bottom: 0.5rem;
+              color: var(--text-secondary);
+            "
+            >WhatsApp Number *</label
+          >
+          <input
+            type="tel"
+            id="whatsappNumber"
+            placeholder="+20 1XX XXXX XXXX"
+            required
+            style="width: 100%"
+          />
+        </div>
+        <div style="margin-bottom: 1rem">
+          <label
+            style="
+              display: block;
+              margin-bottom: 0.5rem;
+              color: var(--text-secondary);
+            "
+            >Alternative Phone</label
+          >
+          <input
+            type="tel"
+            id="altPhone"
+            placeholder="Optional"
+            style="width: 100%"
+          />
+        </div>
+        <div style="margin-bottom: 1rem">
+          <label
+            style="
+              display: block;
+              margin-bottom: 0.5rem;
+              color: var(--text-secondary);
+            "
+            >Detailed Address *</label
+          >
+          <textarea
+            id="address"
+            rows="3"
+            placeholder="Street, Area, City, Governorate"
+            required
+            style="width: 100%"
+          ></textarea>
+        </div>
+        <div style="margin-bottom: 1.5rem">
+          <label
+            style="
+              display: block;
+              margin-bottom: 0.5rem;
+              color: var(--text-secondary);
+            "
+            >Additional Options</label
+          >
+          <div style="display: flex; flex-wrap: wrap; gap: 1.5rem">
+            <label
+              style="
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                color: var(--text-secondary);
+                cursor: pointer;
+              "
+            >
+              <input type="checkbox" id="giftWrap" /> Gift Wrapping (+20 EGP)
+            </label>
+            <label
+              style="
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                color: var(--text-secondary);
+                cursor: pointer;
+              "
+            >
+              <input type="checkbox" id="expressDelivery" /> Express Delivery
+              (+50 EGP)
+            </label>
+          </div>
+        </div>
+        <div style="margin-bottom: 1.5rem">
+          <label
+            style="
+              display: block;
+              margin-bottom: 0.5rem;
+              color: var(--text-secondary);
+            "
+            >Order Notes</label
+          >
+          <textarea
+            id="orderNotes"
+            rows="3"
+            placeholder="Any special requests or notes..."
+            style="width: 100%"
+          ></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold" style="width: 100%">
+          <i class="fa-solid fa-lock"></i> Place Order
+        </button>
+        <p
+          id="formSuccess"
+          style="color: #27ae60; margin-top: 1rem; display: none"
+        >
+          ✓ Order placed successfully! We'll contact you shortly.
+        </p>
+      </form>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-bottom">
+        <p>&copy; 2026 FAKHAMAH. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      const GOOGLE_SCRIPT_URL =
+        "https://script.google.com/macros/s/AKfycbzsicGI_N0u1799zwiDmuOdlGQCMBEOiwQ627GW2KAkiti4z0qxgEdwwuysIfpQMxqm3Q/exec";
+
+      const CART_KEY = "FAKHAMAHCart";
+
+      function getCart() {
+        return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+      }
+
+      function saveCart(cartData) {
+        localStorage.setItem(CART_KEY, JSON.stringify(cartData));
+      }
+
+      function updateCartCount() {
+        const cart = getCart();
+        const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+        const countEl = document.getElementById("cartCount");
+        if (countEl) countEl.textContent = count;
+      }
+
+      function renderOrderPreview() {
+        const cart = getCart();
+        const preview = document.getElementById("orderPreview");
+        const form = document.getElementById("detailedCheckoutForm");
+
+        if (cart.length === 0) {
+          preview.innerHTML = `
+                    <div style="text-align:center; padding:1.5rem;">
+                        <i class="fa-solid fa-bag-shopping" style="font-size:3rem; color:var(--text-muted);"></i>
+                        <p style="color:var(--text-muted); margin-top:1rem;">Your cart is empty.</p>
+                        <a href="shop.html" class="btn btn-gold" style="margin-top:1rem; display:inline-block;">Continue Shopping</a>
+                    </div>`;
+          form.style.display = "none";
+          return;
+        }
+
+        form.style.display = "block";
+        const total = cart.reduce((sum, i) => sum + i.price * i.quantity, 0);
+        preview.innerHTML = `
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span>📦 ${cart.length} item(s)</span>
+                    <span style="color:var(--gold); font-weight:bold;">Total: ${total} EGP</span>
+                </div>`;
+      }
+
+      async function sendToGoogleSheets(data) {
+        try {
+          await fetch(GOOGLE_SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          });
+          return true;
+        } catch (error) {
+          console.error("Error sending to Google Sheets:", error);
+          return false;
+        }
+      }
+
+      document
+        .getElementById("detailedCheckoutForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const fullName = document.getElementById("fullName").value.trim();
+          const whatsapp = document
+            .getElementById("whatsappNumber")
+            .value.trim();
+          const altPhone = document.getElementById("altPhone").value.trim();
+          const address = document.getElementById("address").value.trim();
+          const giftWrap = document.getElementById("giftWrap").checked;
+          const express = document.getElementById("expressDelivery").checked;
+          const notes = document.getElementById("orderNotes").value.trim();
+
+          if (!fullName || !whatsapp || !address) {
+            alert(
+              "Please fill in all required fields (Name, WhatsApp, Address).",
+            );
+            return;
+          }
+
+          const cart = getCart();
+          if (cart.length === 0) {
+            alert("Your cart is empty.");
+            return;
+          }
+
+          const total = cart.reduce(
+            (sum, item) => sum + item.price * item.quantity,
+            0,
+          );
+          const cartItemsStr = cart
+            .map((item) => `${item.name} x${item.quantity}`)
+            .join(", ");
+
+          const orderData = {
+            fullName,
+            whatsapp,
+            altPhone,
+            address,
+            giftWrap,
+            expressDelivery: express,
+            notes,
+            cartItems: cartItemsStr,
+            total: total + " EGP",
+            date: new Date().toISOString(),
+          };
+
+          const success = await sendToGoogleSheets(orderData);
+
+          if (success) {
+            // مسح السلة والتوجيه لصفحة الشكر
+            saveCart([]);
+            updateCartCount();
+            window.location.href = "thankyou.html";
+          } else {
+            alert("There was an error placing your order. Please try again.");
+          }
+        });
+
+      renderOrderPreview();
+      updateCartCount();
+    </script>
+  </body>
+</html>

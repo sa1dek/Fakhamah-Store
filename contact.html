@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | FAKHAMAH</title>
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/t4pyxgRD/Logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="nav-brand">FAKHAMAH</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="index.html#categories">Categories</a></li>
+            <!-- <li><a href="index.html#reviews">Reviews</a></li> -->
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+        <div class="nav-icons">
+            <!-- <button class="icon-btn"><i class="fa-solid fa-magnifying-glass"></i></button> -->
+            <a href="checkout.html" class="icon-btn cart-icon-btn">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </a>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    <!-- Mobile Menu (كما هو) -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="index.html#categories">Categories</a>
+        <!-- <a href="index.html#reviews">Reviews</a> -->
+        <a href="index.html#faq">FAQ</a>
+        <a href="index.html#about">About</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <!-- محتوى صفحة التواصل -->
+    <main style="padding: 8rem 2rem 4rem; max-width: 600px; margin: 0 auto;">
+        <div class="section-header reveal">
+            <span class="section-tag">Get In Touch</span>
+            <h2 class="section-title">Contact Us</h2>
+            <div class="section-line"></div>
+        </div>
+        <form id="contactForm" class="checkout-form" style="background: var(--glass-bg); border-radius: var(--radius-lg); padding: 2.5rem;">
+            <div style="margin-bottom: 1rem;">
+                <label style="display:block; margin-bottom:0.5rem; color: var(--text-secondary);">Full Name *</label>
+                <input type="text" id="contactName" placeholder="Enter your full name" required style="width:100%;">
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <label style="display:block; margin-bottom:0.5rem; color: var(--text-secondary);">WhatsApp Number *</label>
+                <input type="tel" id="contactPhone" placeholder="+20 1XX XXXX XXXX" required style="width:100%;">
+                <small style="color:var(--text-muted);">We'll reply via WhatsApp</small>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <label style="display:block; margin-bottom:0.5rem; color: var(--text-secondary);">Your Message *</label>
+                <textarea id="contactMessage" rows="4" placeholder="Write your inquiry..." required style="width:100%;"></textarea>
+            </div>
+            <button type="submit" class="btn btn-gold" style="width:100%;">
+                <i class="fa-brands fa-whatsapp"></i> Send via WhatsApp
+            </button>
+            <p id="contactSuccess" style="color:#27ae60; margin-top:1rem; display:none;">✓ Message sent! Redirecting to WhatsApp...</p>
+        </form>
+    </main>
+
+    <footer class="footer" style="margin-top:3rem;">
+        <div class="footer-bottom">
+            <p>&copy; 2026 FAKHAMAH. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('contactName').value.trim();
+            const phone = document.getElementById('contactPhone').value.trim();
+            const message = document.getElementById('contactMessage').value.trim();
+
+            if (!name || !phone || !message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+        
+            const businessWhatsApp = '201068480441';
+            const text = `Hello FAKHAMAH,%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Phone:* ${encodeURIComponent(phone)}%0A*Message:* ${encodeURIComponent(message)}`;
+
+            const successMsg = document.getElementById('contactSuccess');
+            successMsg.style.display = 'block';
+            setTimeout(() => {
+                window.open(`https://wa.me/${businessWhatsApp}?text=${text}`, '_blank');
+                successMsg.style.display = 'none';
+                this.reset();
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
