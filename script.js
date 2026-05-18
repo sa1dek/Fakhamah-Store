@@ -10,7 +10,12 @@ const products = [
     discount: "25%",
     image: "https://i.postimg.cc/jqLpw7HW/Per1.jpg",
     description: "Tropical fruity notes with warm amber.",
-    stock: { "30ml": 0, "50ml": 1, "100ml": 3 },
+    prices: {
+      "30ml": 315,
+      "50ml": 275,
+      "100ml": 585,
+    },
+    stock: { "30ml": 0, "50ml":1, "100ml": 3 },
   },
   {
     id: 2,
@@ -22,6 +27,11 @@ const products = [
     discount: "23%",
     image: "https://i.postimg.cc/FHg85g4g/Per2.jpg",
     description: "Fresh aromatic with deep woody base.",
+    prices: {
+      "30ml": 315,
+      "50ml": 450,
+      "100ml": 585,
+    },
     stock: { "30ml": 0, "50ml": 5, "100ml": 3 },
   },
   {
@@ -34,6 +44,11 @@ const products = [
     discount: "22%",
     image: "https://i.postimg.cc/vm0KDYDg/Per3.jpg",
     description: "Spicy apple with boozy vanilla.",
+    prices: {
+      "30ml": 315,
+      "50ml": 450,
+      "100ml": 585,
+    },
     stock: { "30ml": 0, "50ml": 3, "100ml": 2 },
   },
   {
@@ -46,13 +61,17 @@ const products = [
     discount: "23%",
     image: "https://i.postimg.cc/G2NSJXFv/Per4.jpg",
     description: "Citrus marine with coconut water.",
+    prices: {
+      "30ml": 315,
+      "50ml": 450,
+      "100ml": 585,
+    },
     stock: { "30ml": 0, "50ml": 5, "100ml": 0 },
   },
 ];
 
 // Cart stored in localStorage
 let cart = JSON.parse(localStorage.getItem("FAKHAMAHCart")) || [];
-
 // ========== NAVBAR & MOBILE MENU ==========
 const navbar = document.getElementById("navbar");
 const hamburger = document.getElementById("hamburger");
@@ -87,7 +106,6 @@ if (hamburger) {
 window.addEventListener("scroll", () => {
   if (navbar) navbar.classList.toggle("scrolled", window.scrollY > 50);
 });
-
 // ========== CART FUNCTIONS ==========
 function saveCart() {
   localStorage.setItem("FAKHAMAHCart", JSON.stringify(cart));
@@ -127,7 +145,6 @@ function removeFromCart(productId) {
   saveCart();
   updateCartCount();
 }
-
 // ========== RENDER PRODUCT CARD (reusable) ==========
 function createProductCard(product, showAddToCart = true) {
   const card = document.createElement("div");
@@ -186,108 +203,13 @@ function createProductCard(product, showAddToCart = true) {
   });
   return card;
 }
-
-// ========== HOME PAGE: SLIDER ==========
-// const sliderTrack = document.getElementById("sliderTrack");
-// if (sliderTrack) {
-//   const allProducts = [...products, ...products, ...products];
-//   allProducts.forEach((p) => sliderTrack.appendChild(createProductCard(p)));
-//   let index = products.length;
-//   let autoSlideTimer;
-
-//   const updateSlider = (animate = true) => {
-//     const cardWidth = sliderTrack.querySelector(".product-card")?.offsetWidth || 300;
-//     sliderTrack.style.transition = animate ? "transform 0.5s ease" : "none";
-//     sliderTrack.style.transform = `translateX(-${index * (cardWidth + 24)}px)`;
-
-//
-//     const dots = document.querySelectorAll("#sliderDots .dot");
-//     dots.forEach((dot, i) => {
-//       dot.classList.toggle("active", i === (index % products.length));
-//     });
-//   };
-
-//
-//   const dotsContainer = document.getElementById("sliderDots");
-//   if (dotsContainer) {
-//     for (let i = 0; i < products.length; i++) {
-//       const dot = document.createElement("button");
-//       dot.classList.add("dot");
-//       dot.addEventListener("click", () => {
-//         index = products.length + i;
-//         updateSlider();
-//         resetAutoSlide();
-//       });
-//       dotsContainer.appendChild(dot);
-//     }
-//   }
-
-//   function startAutoSlide() {
-//     stopAutoSlide();
-//     autoSlideTimer = setInterval(() => {
-//       index++;
-//       updateSlider();
-//       if (index >= products.length * 2) {
-//         setTimeout(() => {
-//           index = products.length;
-//           updateSlider(false);
-//         }, 500);
-//       }
-//     }, 3000);
-//   }
-
-//   function stopAutoSlide() {
-//     if (autoSlideTimer) {
-//       clearInterval(autoSlideTimer);
-//       autoSlideTimer = null;
-//     }
-//   }
-
-//   function resetAutoSlide() {
-//     stopAutoSlide();
-//     startAutoSlide();
-//   }
-
-//   document.getElementById("sliderPrev")?.addEventListener("click", () => {
-//     index--;
-//     updateSlider();
-//     if (index < 0) {
-//       setTimeout(() => {
-//         index = products.length * 2 - 1;
-//         updateSlider(false);
-//       }, 500);
-//     }
-//     resetAutoSlide();
-//   });
-
-//   document.getElementById("sliderNext")?.addEventListener("click", () => {
-//     index++;
-//     updateSlider();
-//     if (index >= products.length * 2) {
-//       setTimeout(() => {
-//         index = products.length;
-//         updateSlider(false);
-//       }, 500);
-//     }
-//     resetAutoSlide();
-//   });
-
-//   updateSlider(false);
-//   startAutoSlide();
-
-//   const sliderContainer = document.querySelector(".slider-container");
-//   if (sliderContainer) {
-//     sliderContainer.addEventListener("mouseenter", stopAutoSlide);
-//     sliderContainer.addEventListener("mouseleave", startAutoSlide);
-//   }
-// }
 // ========== HOME PAGE: SLIDER ==========
 const sliderTrack = document.getElementById("sliderTrack");
 if (sliderTrack) {
   const allProducts = [...products, ...products, ...products];
   allProducts.forEach((p) => sliderTrack.appendChild(createProductCard(p)));
   let index = products.length;
-  let autoSlideTimer; // مؤقت الحركة التلقائية
+  let autoSlideTimer;
 
   const updateSlider = (animate = true) => {
     const cardWidth =
@@ -295,14 +217,12 @@ if (sliderTrack) {
     sliderTrack.style.transition = animate ? "transform 0.5s ease" : "none";
     sliderTrack.style.transform = `translateX(-${index * (cardWidth + 24)}px)`;
 
-    // تحديث النقاط
     const dots = document.querySelectorAll("#sliderDots .dot");
     dots.forEach((dot, i) => {
       dot.classList.toggle("active", i === index % products.length);
     });
   };
 
-  // إنشاء النقاط
   const dotsContainer = document.getElementById("sliderDots");
   if (dotsContainer) {
     for (let i = 0; i < products.length; i++) {
@@ -311,15 +231,14 @@ if (sliderTrack) {
       dot.addEventListener("click", () => {
         index = products.length + i;
         updateSlider();
-        resetAutoSlide(); // إعادة تعيين التوقيت عند النقر
+        resetAutoSlide();
       });
       dotsContainer.appendChild(dot);
     }
   }
 
-  // دالة لبدء الحركة التلقائية
   function startAutoSlide() {
-    stopAutoSlide(); // إيقاف أي مؤقت سابق
+    stopAutoSlide();
     autoSlideTimer = setInterval(() => {
       index++;
       updateSlider();
@@ -329,10 +248,9 @@ if (sliderTrack) {
           updateSlider(false);
         }, 500);
       }
-    }, 3000); // التغيير كل 3 ثواني
+    }, 3000);
   }
 
-  // دالة لإيقاف الحركة التلقائية
   function stopAutoSlide() {
     if (autoSlideTimer) {
       clearInterval(autoSlideTimer);
@@ -340,13 +258,11 @@ if (sliderTrack) {
     }
   }
 
-  // إعادة تعيين التوقيت (للاستخدام بعد التفاعل اليدوي)
   function resetAutoSlide() {
     stopAutoSlide();
-    startAutoSlide(); // يبدأ من جديد بعد فترة
+    startAutoSlide();
   }
 
-  // أزرار الأسهم
   document.getElementById("sliderPrev")?.addEventListener("click", () => {
     index--;
     updateSlider();
@@ -371,11 +287,9 @@ if (sliderTrack) {
     resetAutoSlide();
   });
 
-  // بدء الحركة التلقائية عند التحميل
   updateSlider(false);
   startAutoSlide();
 
-  // إيقاف الحركة عند تمرير الماوس فوق السلايدر (اختياري)
   const sliderContainer = document.querySelector(".slider-container");
   if (sliderContainer) {
     sliderContainer.addEventListener("mouseenter", stopAutoSlide);
@@ -412,7 +326,6 @@ if (testimonialsTrack) {
     testimonialsTrack.appendChild(div);
   });
 }
-
 // ========== FAQ ==========
 const faqContainer = document.getElementById("faqContainer");
 if (faqContainer) {
@@ -533,34 +446,32 @@ if (productDetail) {
   const id = parseInt(params.get("id"));
   const product = products.find((p) => p.id === id) || products[0];
 
-  // ========== إعدادات الأسعار والمخزون ==========
-  const sizePrices = {
+  // جلب الأسعار والمخزون من بيانات المنتج
+  const sizePrices = product.prices || {
     "30ml": Math.round(product.price * 0.7),
     "50ml": product.price,
     "100ml": Math.round(product.price * 1.3),
   };
+  const stock = product.stock || { "30ml": 5, "50ml": 5, "100ml": 5 };
 
-  // استخدام المخزون من بيانات المنتج أو قيم افتراضية
-  const stock = product.stock || { "30ml": 0, "50ml": 0, "100ml": 0 };
-
-  // توليد أزرار المقاسات مع شطب غير المتوفر
-  const sizeButtonsHTML = Object.keys(sizePrices).map(size => {
-    const isOutOfStock = stock[size] === 0;
-    const disabledAttr = isOutOfStock ? 'disabled' : '';
-    const activeClass = (size === '30ml' && !isOutOfStock) ? 'active' : '';
-    return `
-      <button class="size-btn ${activeClass} ${disabledAttr ? 'disabled' : ''}" 
-              data-size="${size}" ${disabledAttr}>
-          ${size} ${isOutOfStock ? ' (Out of Stock)' : ''}
-      </button>`;
-  }).join('');
-
-  // اختيار أول مقاس متوفر تلقائياً
+  // تحديد أول مقاس متوفر
   const availableSizes = Object.keys(stock).filter(s => stock[s] > 0);
   let selectedSize = availableSizes.includes('30ml') ? '30ml' : availableSizes[0] || '50ml';
   let selectedPrice = sizePrices[selectedSize];
 
-  // ========== بناء واجهة المنتج ==========
+  // توليد أزرار الأحجام (بدون سعر)
+  const sizeButtonsHTML = Object.keys(sizePrices).map(size => {
+    const isOutOfStock = stock[size] === 0;
+    const disabledAttr = isOutOfStock ? 'disabled' : '';
+    const activeClass = (size === selectedSize && !isOutOfStock) ? 'active' : '';
+    return `
+      <button class="size-btn ${activeClass} ${disabledAttr ? 'disabled' : ''}" 
+              data-size="${size}" ${disabledAttr}>
+          ${size} ${isOutOfStock ? '(Out)' : ''}
+      </button>`;
+  }).join('');
+
+  // بناء واجهة المنتج (بنفس الهيكل السابق تمامًا)
   productDetail.innerHTML = `
     <div class="product-detail-flex">
         <div class="product-detail-img">
@@ -599,11 +510,9 @@ if (productDetail) {
 
   let qty = 1;
 
-  // تفعيل أزرار المقاسات
-  const sizeBtns = document.querySelectorAll(".size-btn:not(.disabled)");
-  sizeBtns.forEach((btn) => {
+  // تفعيل أزرار الأحجام
+  document.querySelectorAll(".size-btn:not(.disabled)").forEach(btn => {
     btn.addEventListener("click", () => {
-      // إزالة active من الجميع
       document.querySelectorAll(".size-btn").forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
       selectedSize = btn.dataset.size;
@@ -611,10 +520,6 @@ if (productDetail) {
       document.getElementById("dynamicPrice").textContent = selectedPrice + " EGP";
     });
   });
-
-  // تنشيط أول زر متوفر عند التحميل
-  const firstAvailableBtn = document.querySelector(`.size-btn:not(.disabled)[data-size="${selectedSize}"]`);
-  if (firstAvailableBtn) firstAvailableBtn.classList.add("active");
 
   // أزرار الكمية
   document.getElementById("qtyPlus").addEventListener("click", () => {
@@ -626,17 +531,14 @@ if (productDetail) {
     document.getElementById("quantityDisplay").textContent = qty;
   });
 
-  // إضافة إلى السلة مع التحقق من المخزون
+  // الإضافة إلى السلة
   document.getElementById("addToCartDetail").addEventListener("click", () => {
     if (stock[selectedSize] === 0) {
-      alert("Sorry, this size is out of stock.");
+      alert("This size is out of stock.");
       return;
     }
-
     const cart = JSON.parse(localStorage.getItem("FAKHAMAHCart")) || [];
-    const existing = cart.find(
-      (item) => item.id === product.id && item.size === selectedSize,
-    );
+    const existing = cart.find(item => item.id === product.id && item.size === selectedSize);
     if (existing) {
       existing.quantity += qty;
     } else {
@@ -709,7 +611,6 @@ if (checkoutContainer) {
   };
   renderCheckout();
 }
-
 // ========== INIT ==========
 updateCartCount();
 // ========== || ==========

@@ -18,40 +18,11 @@
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 20px;
-  /* --font-heading: "Georgia", "Times New Roman", serif;
-  --font-body: "Segoe UI", "Helvetica Neue", Arial, sans-serif; */
   --font-heading: "Arvo", Georgia, serif;
   --font-subheading: "Roboto Mono", monospace;
   --font-body: "Arvo", Georgia, serif;
 }
-.size-btn.disabled {
-  opacity: 0.4;
-  pointer-events: none;
-  border-color: rgba(255, 255, 255, 0.1);
-  color: #666;
-  text-decoration: line-through;
-  cursor: not-allowed;
-}
-.size-btn {
-  background: transparent;
-  border: 1.5px solid var(--glass-border);
-  color: var(--text-secondary);
-  padding: 0.7rem 1.5rem;
-  border-radius: 50px;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  cursor: pointer;
-  transition: var(--transition-smooth);
-}
-.size-btn.active {
-  border-color: var(--gold);
-  color: var(--gold);
-  background: rgba(201, 169, 110, 0.1);
-}
-.size-btn:hover {
-  border-color: var(--gold-light);
-  color: #fff;
-}
+
 * {
   margin: 0;
   padding: 0;
@@ -858,6 +829,34 @@ border-radius:20px;
 }
 
 /* ========== PRODUCT DETAIL ========== */
+.size-btn {
+  background: transparent;
+  border: 1.5px solid var(--glass-border);
+  color: var(--text-secondary);
+  padding: 0.7rem 1.5rem;
+  border-radius: 50px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+.size-btn.active {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(201, 169, 110, 0.1);
+}
+.size-btn.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #666;
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+.size-btn:hover {
+  border-color: var(--gold-light);
+  color: #fff;
+}
 .product-detail-page {
   padding: 8rem 3rem 3rem;
   max-width: 1000px;
@@ -911,7 +910,6 @@ border-radius:20px;
   font-size: 1.2rem;
   cursor: pointer;
 }
-
 /* ========== CHECKOUT ========== */
 .checkout-page {
   padding: 8rem 3rem 3rem;
@@ -1028,7 +1026,53 @@ border-radius:20px;
     opacity: 0.7;
   }
 } */
+
+@media (max-width: 768px) {
+  .product-detail-container {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
+  }
+
+  .product-detail-gallery {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .product-main-image {
+    aspect-ratio: 4/3;
+    max-height: 400px;
+    object-fit: contain;
+    background: #0a0a0a;
+  }
+
+  .product-title {
+    font-size: 2rem;
+  }
+
+  .product-price {
+    font-size: 2rem;
+  }
+}
+
 @media (max-width: 480px) {
+  .product-title {
+    font-size: 1.7rem;
+  }
+
+  .product-price {
+    font-size: 1.8rem;
+  }
+
+  .size-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+  }
+
+  .btn-add-to-cart {
+    padding: 1rem !important;
+    font-size: 0.9rem !important;
+  }
   .navbar {
     padding: 0.7rem 1.2rem;
   }
@@ -1209,3 +1253,67 @@ border-radius:20px;
     right: -8px;
   }
 }
+/* ================== */
+/* .button__share {
+  position: relative;
+  background-color: transparent;
+  border: 2px solid var(--gold);
+  outline: none;
+  padding: .75rem 2rem;
+  border-radius: 4rem;
+  cursor: pointer;
+  margin-top: 1.5rem;
+}
+
+.button__social {
+  display: flex;
+  column-gap: .5rem;
+  z-index: 1;
+  justify-content: center;
+}
+
+.button__social a {
+  font-size: 1.5rem;
+  color: var(--gold);
+  transition: transform .5s cubic-bezier(.2, .9, .2, 1.2);
+  transform: translateY(1rem);
+}
+
+.button__social a:nth-child(1) { transition-delay: .1s; }
+.button__social a:nth-child(2) { transition-delay: .15s; }
+.button__social a:nth-child(3) { transition-delay: .2s; }
+.button__social a:nth-child(4) { transition-delay: .25s; }
+
+.button__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--gold);
+  width: 100%;
+  height: 100%;
+  border-radius: 4rem;
+  display: grid;
+  place-items: center;
+  transform: scale(1.03);
+  transition: transform .5s cubic-bezier(.2, .9, .2, 1.2);
+  z-index: 5;
+}
+
+.button__content span {
+  color: #000;
+  font: 600 var(--normal-font-size) var(--body-font);
+}
+
+.button__share:hover .button__content {
+  transform: translateY(-28px) scale(.4);
+}
+
+.button__share:hover .button__social a {
+  transform: translateY(0) scale(1);
+}
+
+@media (max-width: 480px) {
+  .button__share {
+    padding: .75rem 1.5rem;
+  }
+}  */

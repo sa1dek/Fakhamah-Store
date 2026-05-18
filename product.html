@@ -86,6 +86,26 @@ FILE: product.html
       <!-- dynamically filled by JS -->
     </main>
     <footer class="footer"><!-- simplified footer --></footer>
+        <!-- FEATURED PRODUCTS (mini slider) -->
+    <section class="section products-section" id="shop">
+      <div class="section-header reveal">
+        <span class="section-tag">Featured Collection</span>
+        <h2 class="section-title">Bestselling Fragrances</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="slider-container reveal">
+        <button class="slider-arrow prev" id="sliderPrev">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <div class="slider-track-wrapper">
+          <div class="slider-track" id="sliderTrack"></div>
+        </div>
+        <button class="slider-arrow next" id="sliderNext">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <div class="slider-dots" id="sliderDots"></div>
+      </div>
+    </section>
     <script src="script.js"></script>
   </body>
 </html>
