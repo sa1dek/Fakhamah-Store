@@ -10,6 +10,7 @@ const products = [
     discount: "25%",
     image: "https://i.postimg.cc/jqLpw7HW/Per1.jpg",
     description: "Tropical fruity notes with warm amber.",
+    stock: { "30ml": 0, "50ml": 1, "100ml": 3 },
   },
   {
     id: 2,
@@ -21,6 +22,7 @@ const products = [
     discount: "23%",
     image: "https://i.postimg.cc/FHg85g4g/Per2.jpg",
     description: "Fresh aromatic with deep woody base.",
+    stock: { "30ml": 0, "50ml": 5, "100ml": 3 },
   },
   {
     id: 3,
@@ -32,6 +34,7 @@ const products = [
     discount: "22%",
     image: "https://i.postimg.cc/vm0KDYDg/Per3.jpg",
     description: "Spicy apple with boozy vanilla.",
+    stock: { "30ml": 0, "50ml": 3, "100ml": 2 },
   },
   {
     id: 4,
@@ -43,6 +46,7 @@ const products = [
     discount: "23%",
     image: "https://i.postimg.cc/G2NSJXFv/Per4.jpg",
     description: "Citrus marine with coconut water.",
+    stock: { "30ml": 0, "50ml": 5, "100ml": 0 },
   },
 ];
 
@@ -529,13 +533,34 @@ if (productDetail) {
   const id = parseInt(params.get("id"));
   const product = products.find((p) => p.id === id) || products[0];
 
-  // أسعار الأحجام (نسبة من السعر الأساسي - يمكنك تعديلها)
+  // ========== إعدادات الأسعار والمخزون ==========
   const sizePrices = {
     "30ml": Math.round(product.price * 0.7),
     "50ml": product.price,
-    "100ml": Math.round(product.price * 1.3)
+    "100ml": Math.round(product.price * 1.3),
   };
 
+  // استخدام المخزون من بيانات المنتج أو قيم افتراضية
+  const stock = product.stock || { "30ml": 0, "50ml": 0, "100ml": 0 };
+
+  // توليد أزرار المقاسات مع شطب غير المتوفر
+  const sizeButtonsHTML = Object.keys(sizePrices).map(size => {
+    const isOutOfStock = stock[size] === 0;
+    const disabledAttr = isOutOfStock ? 'disabled' : '';
+    const activeClass = (size === '30ml' && !isOutOfStock) ? 'active' : '';
+    return `
+      <button class="size-btn ${activeClass} ${disabledAttr ? 'disabled' : ''}" 
+              data-size="${size}" ${disabledAttr}>
+          ${size} ${isOutOfStock ? ' (Out of Stock)' : ''}
+      </button>`;
+  }).join('');
+
+  // اختيار أول مقاس متوفر تلقائياً
+  const availableSizes = Object.keys(stock).filter(s => stock[s] > 0);
+  let selectedSize = availableSizes.includes('30ml') ? '30ml' : availableSizes[0] || '50ml';
+  let selectedPrice = sizePrices[selectedSize];
+
+  // ========== بناء واجهة المنتج ==========
   productDetail.innerHTML = `
     <div class="product-detail-flex">
         <div class="product-detail-img">
@@ -551,15 +576,13 @@ if (productDetail) {
             <div class="size-selector" style="margin:1.5rem 0;">
                 <label style="color:var(--text-secondary); display:block; margin-bottom:0.8rem;">Size:</label>
                 <div style="display:flex; gap:1rem;">
-                    <button class="size-btn active" data-size="30ml">30ml</button>
-                    <button class="size-btn" data-size="50ml">50ml</button>
-                    <button class="size-btn" data-size="100ml">100ml</button>
+                    ${sizeButtonsHTML}
                 </div>
             </div>
 
             <!-- عرض السعر حسب الحجم المختار -->
             <p style="font-size:2rem; color:var(--gold); font-family: var(--font-heading);" id="dynamicPrice">
-                ${sizePrices["30ml"]} EGP
+                ${selectedPrice} EGP
             </p>
 
             <div class="quantity-selector" style="margin:1.5rem 0;">
@@ -575,20 +598,23 @@ if (productDetail) {
   `;
 
   let qty = 1;
-  let selectedSize = "30ml";
-  let selectedPrice = sizePrices["30ml"];
 
-  // أزرار تغيير الحجم
-  const sizeBtns = document.querySelectorAll(".size-btn");
-  sizeBtns.forEach(btn => {
+  // تفعيل أزرار المقاسات
+  const sizeBtns = document.querySelectorAll(".size-btn:not(.disabled)");
+  sizeBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
-      sizeBtns.forEach(b => b.classList.remove("active"));
+      // إزالة active من الجميع
+      document.querySelectorAll(".size-btn").forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
       selectedSize = btn.dataset.size;
       selectedPrice = sizePrices[selectedSize];
       document.getElementById("dynamicPrice").textContent = selectedPrice + " EGP";
     });
   });
+
+  // تنشيط أول زر متوفر عند التحميل
+  const firstAvailableBtn = document.querySelector(`.size-btn:not(.disabled)[data-size="${selectedSize}"]`);
+  if (firstAvailableBtn) firstAvailableBtn.classList.add("active");
 
   // أزرار الكمية
   document.getElementById("qtyPlus").addEventListener("click", () => {
@@ -600,11 +626,17 @@ if (productDetail) {
     document.getElementById("quantityDisplay").textContent = qty;
   });
 
-  // إضافة إلى السلة مع الحجم
+  // إضافة إلى السلة مع التحقق من المخزون
   document.getElementById("addToCartDetail").addEventListener("click", () => {
+    if (stock[selectedSize] === 0) {
+      alert("Sorry, this size is out of stock.");
+      return;
+    }
+
     const cart = JSON.parse(localStorage.getItem("FAKHAMAHCart")) || [];
-    // البحث عن نفس المنتج بنفس الحجم
-    const existing = cart.find(item => item.id === product.id && item.size === selectedSize);
+    const existing = cart.find(
+      (item) => item.id === product.id && item.size === selectedSize,
+    );
     if (existing) {
       existing.quantity += qty;
     } else {
@@ -613,18 +645,16 @@ if (productDetail) {
         name: product.name,
         size: selectedSize,
         price: selectedPrice,
-        quantity: qty
+        quantity: qty,
       });
     }
     localStorage.setItem("FAKHAMAHCart", JSON.stringify(cart));
-    // عرض رسالة نجاح
     const msg = document.getElementById("cartMessage");
     msg.style.display = "block";
-    setTimeout(() => msg.style.display = "none", 1500);
+    setTimeout(() => (msg.style.display = "none"), 1500);
     updateCartCount();
   });
 }
-
 // ========== CHECKOUT PAGE ==========
 const checkoutContainer = document.getElementById("checkoutContainer");
 if (checkoutContainer) {

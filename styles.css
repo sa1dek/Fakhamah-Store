@@ -24,6 +24,14 @@
   --font-subheading: "Roboto Mono", monospace;
   --font-body: "Arvo", Georgia, serif;
 }
+.size-btn.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #666;
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
 .size-btn {
   background: transparent;
   border: 1.5px solid var(--glass-border);
