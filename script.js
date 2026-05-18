@@ -184,18 +184,165 @@ function createProductCard(product, showAddToCart = true) {
 }
 
 // ========== HOME PAGE: SLIDER ==========
+// const sliderTrack = document.getElementById("sliderTrack");
+// if (sliderTrack) {
+//   const allProducts = [...products, ...products, ...products];
+//   allProducts.forEach((p) => sliderTrack.appendChild(createProductCard(p)));
+//   let index = products.length;
+//   let autoSlideTimer;
+
+//   const updateSlider = (animate = true) => {
+//     const cardWidth = sliderTrack.querySelector(".product-card")?.offsetWidth || 300;
+//     sliderTrack.style.transition = animate ? "transform 0.5s ease" : "none";
+//     sliderTrack.style.transform = `translateX(-${index * (cardWidth + 24)}px)`;
+
+//
+//     const dots = document.querySelectorAll("#sliderDots .dot");
+//     dots.forEach((dot, i) => {
+//       dot.classList.toggle("active", i === (index % products.length));
+//     });
+//   };
+
+//
+//   const dotsContainer = document.getElementById("sliderDots");
+//   if (dotsContainer) {
+//     for (let i = 0; i < products.length; i++) {
+//       const dot = document.createElement("button");
+//       dot.classList.add("dot");
+//       dot.addEventListener("click", () => {
+//         index = products.length + i;
+//         updateSlider();
+//         resetAutoSlide();
+//       });
+//       dotsContainer.appendChild(dot);
+//     }
+//   }
+
+//   function startAutoSlide() {
+//     stopAutoSlide();
+//     autoSlideTimer = setInterval(() => {
+//       index++;
+//       updateSlider();
+//       if (index >= products.length * 2) {
+//         setTimeout(() => {
+//           index = products.length;
+//           updateSlider(false);
+//         }, 500);
+//       }
+//     }, 3000);
+//   }
+
+//   function stopAutoSlide() {
+//     if (autoSlideTimer) {
+//       clearInterval(autoSlideTimer);
+//       autoSlideTimer = null;
+//     }
+//   }
+
+//   function resetAutoSlide() {
+//     stopAutoSlide();
+//     startAutoSlide();
+//   }
+
+//   document.getElementById("sliderPrev")?.addEventListener("click", () => {
+//     index--;
+//     updateSlider();
+//     if (index < 0) {
+//       setTimeout(() => {
+//         index = products.length * 2 - 1;
+//         updateSlider(false);
+//       }, 500);
+//     }
+//     resetAutoSlide();
+//   });
+
+//   document.getElementById("sliderNext")?.addEventListener("click", () => {
+//     index++;
+//     updateSlider();
+//     if (index >= products.length * 2) {
+//       setTimeout(() => {
+//         index = products.length;
+//         updateSlider(false);
+//       }, 500);
+//     }
+//     resetAutoSlide();
+//   });
+
+//   updateSlider(false);
+//   startAutoSlide();
+
+//   const sliderContainer = document.querySelector(".slider-container");
+//   if (sliderContainer) {
+//     sliderContainer.addEventListener("mouseenter", stopAutoSlide);
+//     sliderContainer.addEventListener("mouseleave", startAutoSlide);
+//   }
+// }
+// ========== HOME PAGE: SLIDER ==========
 const sliderTrack = document.getElementById("sliderTrack");
 if (sliderTrack) {
   const allProducts = [...products, ...products, ...products];
   allProducts.forEach((p) => sliderTrack.appendChild(createProductCard(p)));
   let index = products.length;
+  let autoSlideTimer; // مؤقت الحركة التلقائية
+
   const updateSlider = (animate = true) => {
     const cardWidth =
       sliderTrack.querySelector(".product-card")?.offsetWidth || 300;
     sliderTrack.style.transition = animate ? "transform 0.5s ease" : "none";
     sliderTrack.style.transform = `translateX(-${index * (cardWidth + 24)}px)`;
+
+    // تحديث النقاط
+    const dots = document.querySelectorAll("#sliderDots .dot");
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === index % products.length);
+    });
   };
-  updateSlider(false);
+
+  // إنشاء النقاط
+  const dotsContainer = document.getElementById("sliderDots");
+  if (dotsContainer) {
+    for (let i = 0; i < products.length; i++) {
+      const dot = document.createElement("button");
+      dot.classList.add("dot");
+      dot.addEventListener("click", () => {
+        index = products.length + i;
+        updateSlider();
+        resetAutoSlide(); // إعادة تعيين التوقيت عند النقر
+      });
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  // دالة لبدء الحركة التلقائية
+  function startAutoSlide() {
+    stopAutoSlide(); // إيقاف أي مؤقت سابق
+    autoSlideTimer = setInterval(() => {
+      index++;
+      updateSlider();
+      if (index >= products.length * 2) {
+        setTimeout(() => {
+          index = products.length;
+          updateSlider(false);
+        }, 500);
+      }
+    }, 3000); // التغيير كل 3 ثواني
+  }
+
+  // دالة لإيقاف الحركة التلقائية
+  function stopAutoSlide() {
+    if (autoSlideTimer) {
+      clearInterval(autoSlideTimer);
+      autoSlideTimer = null;
+    }
+  }
+
+  // إعادة تعيين التوقيت (للاستخدام بعد التفاعل اليدوي)
+  function resetAutoSlide() {
+    stopAutoSlide();
+    startAutoSlide(); // يبدأ من جديد بعد فترة
+  }
+
+  // أزرار الأسهم
   document.getElementById("sliderPrev")?.addEventListener("click", () => {
     index--;
     updateSlider();
@@ -205,7 +352,9 @@ if (sliderTrack) {
         updateSlider(false);
       }, 500);
     }
+    resetAutoSlide();
   });
+
   document.getElementById("sliderNext")?.addEventListener("click", () => {
     index++;
     updateSlider();
@@ -215,9 +364,20 @@ if (sliderTrack) {
         updateSlider(false);
       }, 500);
     }
+    resetAutoSlide();
   });
-}
 
+  // بدء الحركة التلقائية عند التحميل
+  updateSlider(false);
+  startAutoSlide();
+
+  // إيقاف الحركة عند تمرير الماوس فوق السلايدر (اختياري)
+  const sliderContainer = document.querySelector(".slider-container");
+  if (sliderContainer) {
+    sliderContainer.addEventListener("mouseenter", stopAutoSlide);
+    sliderContainer.addEventListener("mouseleave", startAutoSlide);
+  }
+}
 // ========== HOME PAGE: TESTIMONIALS ==========
 const testimonialsTrack = document.getElementById("testimonialsTrack");
 if (testimonialsTrack) {
@@ -263,10 +423,6 @@ if (faqContainer) {
       a: "Apply to pulse points, lasts 8-12h.",
     },
     { q: "Shipping Cost", a: "Free shipping over 600 EGP" },
-    {
-      q: "Return Policy",
-      a: "Returns accepted within 7 days for damaged items.",
-    },
   ];
   faqs.forEach((f) => {
     const item = document.createElement("div");
@@ -366,35 +522,75 @@ if (productsGrid) {
 }
 
 // ========== PRODUCT DETAIL PAGE ==========
+// ========== PRODUCT DETAIL PAGE ==========
 const productDetail = document.getElementById("productDetail");
 if (productDetail) {
   const params = new URLSearchParams(window.location.search);
   const id = parseInt(params.get("id"));
   const product = products.find((p) => p.id === id) || products[0];
+
+  // أسعار الأحجام (نسبة من السعر الأساسي - يمكنك تعديلها)
+  const sizePrices = {
+    "30ml": Math.round(product.price * 0.7),
+    "50ml": product.price,
+    "100ml": Math.round(product.price * 1.3)
+  };
+
   productDetail.innerHTML = `
-        <div class="product-detail-flex">
-            <div class="product-detail-img"><img src="${product.image}" alt="${product.name}"></div>
-            <div class="product-detail-info">
-                <h1>${product.name}</h1>
-                <p style="color:var(--text-secondary);">${product.description}</p>
-                <div class="product-specs">
-                    <div class="spec-item"><span>Top Notes</span><span>Citrus, Bergamot</span></div>
-                    <div class="spec-item"><span>Heart Notes</span><span>Jasmine, Spices</span></div>
-                    <div class="spec-item"><span>Base Notes</span><span>Amber, Musk</span></div>
-                    <div class="spec-item"><span>Longevity</span><span>8-12 hours</span></div>
-                    <div class="spec-item"><span>Projection</span><span>Strong</span></div>
-                </div>
-                <p style="font-size:2rem;color:var(--gold);">${product.price} EGP</p>
-                <div class="quantity-selector">
-                    <button class="quantity-btn" id="qtyMinus">-</button>
-                    <span id="quantityDisplay">1</span>
-                    <button class="quantity-btn" id="qtyPlus">+</button>
-                </div>
-                <button class="btn btn-gold" id="addToCartDetail" style="width:100%;">Add to Cart</button>
-            </div>
+    <div class="product-detail-flex">
+        <div class="product-detail-img">
+            <img src="${product.image}" alt="${product.name}" style="width:100%; height:100%; object-fit:cover; border-radius: var(--radius-lg);">
         </div>
-    `;
+        <div class="product-detail-info">
+            <h1>${product.name}</h1>
+            <p class="inspired-by">Inspired by ${product.inspired}</p>
+            <p style="color:var(--text-secondary); margin:1rem 0;">${product.description}</p>
+            <div class="stars" style="margin-bottom:1.5rem;">${'★'.repeat(product.rating)}${'☆'.repeat(5 - product.rating)}</div>
+
+            <!-- اختيار الحجم -->
+            <div class="size-selector" style="margin:1.5rem 0;">
+                <label style="color:var(--text-secondary); display:block; margin-bottom:0.8rem;">Size:</label>
+                <div style="display:flex; gap:1rem;">
+                    <button class="size-btn active" data-size="30ml">30ml</button>
+                    <button class="size-btn" data-size="50ml">50ml</button>
+                    <button class="size-btn" data-size="100ml">100ml</button>
+                </div>
+            </div>
+
+            <!-- عرض السعر حسب الحجم المختار -->
+            <p style="font-size:2rem; color:var(--gold); font-family: var(--font-heading);" id="dynamicPrice">
+                ${sizePrices["30ml"]} EGP
+            </p>
+
+            <div class="quantity-selector" style="margin:1.5rem 0;">
+                <button class="quantity-btn" id="qtyMinus">-</button>
+                <span id="quantityDisplay" style="color:#fff; font-size:1.2rem;">1</span>
+                <button class="quantity-btn" id="qtyPlus">+</button>
+            </div>
+
+            <button class="btn btn-gold" id="addToCartDetail" style="width:100%;">Add to Cart</button>
+            <p id="cartMessage" style="color:#27ae60; margin-top:0.5rem; display:none;">Added to cart!</p>
+        </div>
+    </div>
+  `;
+
   let qty = 1;
+  let selectedSize = "30ml";
+  let selectedPrice = sizePrices["30ml"];
+
+  // أزرار تغيير الحجم
+  const sizeBtns = document.querySelectorAll(".size-btn");
+  sizeBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      sizeBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      selectedSize = btn.dataset.size;
+      selectedPrice = sizePrices[selectedSize];
+      document.getElementById("dynamicPrice").textContent = selectedPrice + " EGP";
+    });
+  });
+
+  // أزرار الكمية
   document.getElementById("qtyPlus").addEventListener("click", () => {
     qty++;
     document.getElementById("quantityDisplay").textContent = qty;
@@ -403,9 +599,29 @@ if (productDetail) {
     if (qty > 1) qty--;
     document.getElementById("quantityDisplay").textContent = qty;
   });
+
+  // إضافة إلى السلة مع الحجم
   document.getElementById("addToCartDetail").addEventListener("click", () => {
-    addToCart(product.id, qty);
-    alert("Added to cart!");
+    const cart = JSON.parse(localStorage.getItem("FAKHAMAHCart")) || [];
+    // البحث عن نفس المنتج بنفس الحجم
+    const existing = cart.find(item => item.id === product.id && item.size === selectedSize);
+    if (existing) {
+      existing.quantity += qty;
+    } else {
+      cart.push({
+        id: product.id,
+        name: product.name,
+        size: selectedSize,
+        price: selectedPrice,
+        quantity: qty
+      });
+    }
+    localStorage.setItem("FAKHAMAHCart", JSON.stringify(cart));
+    // عرض رسالة نجاح
+    const msg = document.getElementById("cartMessage");
+    msg.style.display = "block";
+    setTimeout(() => msg.style.display = "none", 1500);
+    updateCartCount();
   });
 }
 

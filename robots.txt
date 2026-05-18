@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /checkout-form.html
+Sitemap: https://fakhamah.com/sitemap.xml

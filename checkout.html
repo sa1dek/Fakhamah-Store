@@ -1,79 +1,137 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta name="title" content="Fakhamah | Luxury Perfumes Egypt" />
+    <meta
+      name="description"
+      content="Discover Fakhamah's curated niche and designer . Premium imported oils, long-lasting performance, and elegant packaging. Fast delivery across Egypt."
+    />
+    <meta
+      name="keywords"
+      content="عطور, عطور فخمة, عطور نيتش, Fakhamah, ليال, عطور مصر, عطور مستوردة, عطور تدوم طويلاً, عطور بجودة عالية, عطور رجالي, عطور نسائي, perfume, luxury perfume egypt, best perfume egypt"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="author" content="Fakhamah" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://Fakhamah.com/" />
+    <meta property="og:title" content="Fakhamah  | Luxury Perfumes Egypt" />
+    <meta
+      property="og:description"
+      content="Curated niche and designer  delivered across Egypt. Every bottle has a story worth wearing."
+    />
+    <meta
+      property="og:image"
+      content="https://Fakhamah.com/image/products/og-image.jpg"
+    />
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://Fakhamah.com/" />
+    <meta property="twitter:title" content="Fakhamah | Luxury Perfumes Egypt" />
+    <meta
+      property="twitter:description"
+      content="Curated niche and designer  delivered across Egypt. Every bottle has a story worth wearing."
+    />
+    <meta
+      property="twitter:image"
+      content="https://Fakhamah.com/image/products/og-image.jpg"
+    />
+
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://Fakhamah.com/" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Checkout | FAKHAMAH</title>
-    <link rel="icon" type="image/png" href="https://i.postimg.cc/t4pyxgRD/Logo.png">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://i.postimg.cc/t4pyxgRD/Logo.png"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
     <nav class="navbar" id="navbar">
-        <a href="index.html" class="nav-brand">FAKHAMAH</a>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="index.html#categories">Categories</a></li>
-            <!-- <li><a href="index.html#reviews">Reviews</a></li> -->
-            <li><a href="index.html#faq">FAQ</a></li>
-            <li><a href="index.html#about">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <div class="nav-icons">
-            <!-- <button class="icon-btn"><i class="fa-solid fa-magnifying-glass"></i></button> -->
-            <a href="checkout.html" class="icon-btn cart-icon-btn active">
-                <i class="fa-solid fa-bag-shopping"></i>
-                <span class="cart-count" id="cartCount">0</span>
-            </a>
-            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
-        </div>
+      <a href="index.html" class="nav-brand">FAKHAMAH</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="index.html#categories">Categories</a></li>
+        <!-- <li><a href="index.html#reviews">Reviews</a></li> -->
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-icons">
+        <!-- <button class="icon-btn"><i class="fa-solid fa-magnifying-glass"></i></button> -->
+        <a href="checkout.html" class="icon-btn cart-icon-btn active">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+        <button class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </nav>
     <div class="mobile-overlay" id="mobileOverlay"></div>
     <div class="mobile-menu" id="mobileMenu">
-        <a href="index.html">Home</a>
-        <a href="shop.html">Shop</a>
-        <a href="index.html#categories">Categories</a>
-        <a href="index.html#about">About</a>
-        <a href="index.html#reviews">Reviews</a>
-        <a href="index.html#faq">FAQ</a>
-        <a href="contact.html">Contact</a>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="index.html#categories">Categories</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#reviews">Reviews</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="contact.html">Contact</a>
     </div>
 
-    <main class="checkout-page" style="padding-top: 8rem;">
-        <div class="section-header">
-            <span class="section-tag">Checkout</span>
-            <h2 class="section-title">Your Order</h2>
-            <div class="section-line"></div>
-        </div>
-        <div id="orderSummaryContainer" style="max-width: 800px; margin: 0 auto;"></div>
+    <main class="checkout-page" style="padding-top: 8rem">
+      <div class="section-header">
+        <span class="section-tag">Checkout</span>
+        <h2 class="section-title">Your Order</h2>
+        <div class="section-line"></div>
+      </div>
+      <div
+        id="orderSummaryContainer"
+        style="max-width: 800px; margin: 0 auto"
+      ></div>
     </main>
 
     <footer class="footer">
-        <div class="footer-bottom">
-            <p>&copy; 2026 FAKHAMAH. All rights reserved.</p>
-        </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 FAKHAMAH. All rights reserved.</p>
+      </div>
     </footer>
 
     <script src="script.js"></script>
     <script>
-        // عرض الطلب الحالي
-        function renderOrderSummary() {
-            const container = document.getElementById('orderSummaryContainer');
-            const cart = JSON.parse(localStorage.getItem('FAKHAMAHCart')) || [];
-            
-            if (cart.length === 0) {
-                container.innerHTML = `
+      // عرض الطلب الحالي
+      function renderOrderSummary() {
+        const container = document.getElementById("orderSummaryContainer");
+        const cart = JSON.parse(localStorage.getItem("FAKHAMAHCart")) || [];
+
+        if (cart.length === 0) {
+          container.innerHTML = `
                     <div style="text-align:center; padding:3rem; background:var(--glass-bg); border-radius:var(--radius-lg);">
                         <i class="fa-solid fa-bag-shopping" style="font-size:3rem; color:var(--text-muted);"></i>
                         <p style="color:var(--text-muted); margin-top:1rem;">Your cart is empty.</p>
                         <a href="shop.html" class="btn btn-gold" style="margin-top:1rem;">Continue Shopping</a>
                     </div>`;
-                return;
-            }
+          return;
+        }
 
-            let total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            let itemsHTML = cart.map(item => `
+        let total = cart.reduce(
+          (sum, item) => sum + item.price * item.quantity,
+          0,
+        );
+        let itemsHTML = cart
+          .map(
+            (item) => `
                 <div class="cart-item" style="display:flex; justify-content:space-between; align-items:center; padding:1rem 0; border-bottom:1px solid rgba(255,255,255,0.05);">
                     <div>
                         <strong>${item.name}</strong>
@@ -86,9 +144,11 @@
                         </button>
                     </div>
                 </div>
-            `).join('');
+            `,
+          )
+          .join("");
 
-            container.innerHTML = `
+        container.innerHTML = `
                 <div class="cart-summary" style="background:var(--glass-bg); border-radius:var(--radius-lg); padding:2rem; margin-bottom:2rem;">
                     <h3 style="color:var(--gold); margin-bottom:1.5rem;">Order Summary</h3>
                     ${itemsHTML}
@@ -102,33 +162,35 @@
                 </div>
             `;
 
-            // حذف عنصر من السلة
-            document.querySelectorAll('.remove-item-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const itemId = parseInt(btn.dataset.id);
-                    let cart = JSON.parse(localStorage.getItem('FAKHAMAHCart')) || [];
-                    cart = cart.filter(item => item.id !== itemId);
-                    localStorage.setItem('FAKHAMAHCart', JSON.stringify(cart));
-                    updateCartCount();
-                    renderOrderSummary(); // إعادة عرض الصفحة
-                });
-            });
+        // حذف عنصر من السلة
+        document.querySelectorAll(".remove-item-btn").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const itemId = parseInt(btn.dataset.id);
+            let cart = JSON.parse(localStorage.getItem("FAKHAMAHCart")) || [];
+            cart = cart.filter((item) => item.id !== itemId);
+            localStorage.setItem("FAKHAMAHCart", JSON.stringify(cart));
+            updateCartCount();
+            renderOrderSummary(); // إعادة عرض الصفحة
+          });
+        });
 
-            // زر المتابعة إلى النموذج
-            document.getElementById('proceedToFormBtn').addEventListener('click', () => {
-                window.location.href = 'checkout-form.html';
-            });
-        }
+        // زر المتابعة إلى النموذج
+        document
+          .getElementById("proceedToFormBtn")
+          .addEventListener("click", () => {
+            window.location.href = "checkout-form.html";
+          });
+      }
 
-        function updateCartCount() {
-            const cart = JSON.parse(localStorage.getItem('FAKHAMAHCart')) || [];
-            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-            const countEl = document.getElementById('cartCount');
-            if (countEl) countEl.textContent = count;
-        }
+      function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem("FAKHAMAHCart")) || [];
+        const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+        const countEl = document.getElementById("cartCount");
+        if (countEl) countEl.textContent = count;
+      }
 
-        renderOrderSummary();
-        updateCartCount();
+      renderOrderSummary();
+      updateCartCount();
     </script>
-</body>
+  </body>
 </html>
