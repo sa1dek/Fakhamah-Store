@@ -1,6 +1,18 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- ========================= -->
+    <!-- DNS Prefetch & Preconnect -->
+    <!-- ========================= -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+
+    <!-- ========================= -->
+    <!-- Meta & SEO               -->
+    <!-- ========================= -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="title" content="Fakhamah | Luxury Perfumes Egypt" />
     <meta
       name="description"
@@ -8,17 +20,16 @@
     />
     <meta
       name="keywords"
-      content="عطور, عطور فخمة, عطور نيتش, Fakhamah, ليال, عطور مصر, عطور مستوردة, عطور تدوم طويلاً, عطور بجودة عالية, عطور رجالي, عطور نسائي, perfume, luxury perfume egypt, best perfume egypt"
+      content="perfume, luxury perfume, niche perfume, Fakhamah, Egyptian perfume, imported perfume, long lasting perfume, high quality perfume, men perfume, women perfume, luxury perfume egypt, best perfume egypt"
     />
     <meta name="robots" content="index, follow" />
     <meta name="language" content="English" />
     <meta name="author" content="Fakhamah" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://Fakhamah.com/" />
-    <meta property="og:title" content="Fakhamah  | Luxury Perfumes Egypt" />
+    <meta property="og:title" content="Fakhamah | Luxury Perfumes Egypt" />
     <meta
       property="og:description"
       content="Curated niche and designer  delivered across Egypt. Every bottle has a story worth wearing."
@@ -27,7 +38,8 @@
       property="og:image"
       content="https://Fakhamah.com/image/products/og-image.jpg"
     />
-    <!-- Twitter -->
+
+    <!-- Twitter Card -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://Fakhamah.com/" />
     <meta property="twitter:title" content="Fakhamah | Luxury Perfumes Egypt" />
@@ -40,25 +52,32 @@
       content="https://Fakhamah.com/image/products/og-image.jpg"
     />
 
-    <!-- Canonical Link -->
+    <!-- Canonical -->
     <link rel="canonical" href="https://Fakhamah.com/" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact Us | FAKHAMAH</title>
+
+    <!-- Favicon -->
     <link
       rel="icon"
       type="image/png"
       href="https://i.postimg.cc/t4pyxgRD/Logo.png"
     />
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+
+    <title>Contact Us | FAKHAMAH</title>
   </head>
   <body>
+    <!-- ========================= -->
+    <!-- NAVBAR                    -->
+    <!-- ========================= -->
     <nav class="navbar" id="navbar">
       <a href="index.html" class="nav-brand">FAKHAMAH</a>
+
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="shop.html">Shop</a></li>
@@ -68,6 +87,7 @@
         <li><a href="index.html#about">About</a></li>
         <li><a href="contact.html" class="active">Contact</a></li>
       </ul>
+
       <div class="nav-icons">
         <!-- <button class="icon-btn"><i class="fa-solid fa-magnifying-glass"></i></button> -->
         <a href="checkout.html" class="icon-btn cart-icon-btn">
@@ -79,7 +99,8 @@
         </button>
       </div>
     </nav>
-    <!-- Mobile Menu (كما هو) -->
+
+    <!-- Mobile Menu (as is) -->
     <div class="mobile-overlay" id="mobileOverlay"></div>
     <div class="mobile-menu" id="mobileMenu">
       <a href="index.html">Home</a>
@@ -91,13 +112,16 @@
       <a href="contact.html">Contact</a>
     </div>
 
-    <!-- محتوى صفحة التواصل -->
+    <!-- ========================= -->
+    <!-- CONTACT PAGE CONTENT      -->
+    <!-- ========================= -->
     <main style="padding: 8rem 2rem 4rem; max-width: 600px; margin: 0 auto">
       <div class="section-header reveal">
         <span class="section-tag">Get In Touch</span>
         <h2 class="section-title">Contact Us</h2>
         <div class="section-line"></div>
       </div>
+
       <form
         id="contactForm"
         class="checkout-form"
@@ -114,8 +138,9 @@
               margin-bottom: 0.5rem;
               color: var(--text-secondary);
             "
-            >Full Name *</label
           >
+            Full Name *
+          </label>
           <input
             type="text"
             id="contactName"
@@ -124,6 +149,7 @@
             style="width: 100%"
           />
         </div>
+
         <div style="margin-bottom: 1rem">
           <label
             style="
@@ -131,8 +157,9 @@
               margin-bottom: 0.5rem;
               color: var(--text-secondary);
             "
-            >WhatsApp Number *</label
           >
+            WhatsApp Number *
+          </label>
           <input
             type="tel"
             id="contactPhone"
@@ -144,6 +171,7 @@
             >We'll reply via WhatsApp</small
           >
         </div>
+
         <div style="margin-bottom: 1.5rem">
           <label
             style="
@@ -151,8 +179,9 @@
               margin-bottom: 0.5rem;
               color: var(--text-secondary);
             "
-            >Your Message *</label
           >
+            Your Message *
+          </label>
           <textarea
             id="contactMessage"
             rows="4"
@@ -161,9 +190,11 @@
             style="width: 100%"
           ></textarea>
         </div>
+
         <button type="submit" class="btn btn-gold" style="width: 100%">
           <i class="fa-brands fa-whatsapp"></i> Send via WhatsApp
         </button>
+
         <p
           id="contactSuccess"
           style="color: #27ae60; margin-top: 1rem; display: none"
@@ -173,12 +204,16 @@
       </form>
     </main>
 
+    <!-- ========================= -->
+    <!-- FOOTER                    -->
+    <!-- ========================= -->
     <footer class="footer" style="margin-top: 3rem">
       <div class="footer-bottom">
         <p>&copy; 2026 FAKHAMAH. All rights reserved.</p>
       </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="script.js"></script>
     <script>
       document

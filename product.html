@@ -1,124 +1,156 @@
-<!-- ============================================
-FILE: product.html
-============================================ -->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta name="title" content="Fakhamah | Luxury Perfumes Egypt" />
-    <meta
-      name="description"
-      content="Discover Fakhamah's curated niche and designer . Premium imported oils, long-lasting performance, and elegant packaging. Fast delivery across Egypt."
-    />
-    <meta
-      name="keywords"
-      content="عطور, عطور فخمة, عطور نيتش, Fakhamah, ليال, عطور مصر, عطور مستوردة, عطور تدوم طويلاً, عطور بجودة عالية, عطور رجالي, عطور نسائي, perfume, luxury perfume egypt, best perfume egypt"
-    />
-    <meta name="robots" content="index, follow" />
-    <meta name="language" content="English" />
-    <meta name="author" content="Fakhamah" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <!-- ========================= -->
+  <!-- DNS Prefetch & Preconnect -->
+  <!-- ========================= -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://Fakhamah.com/" />
-    <meta property="og:title" content="Fakhamah  | Luxury Perfumes Egypt" />
-    <meta
-      property="og:description"
-      content="Curated niche and designer  delivered across Egypt. Every bottle has a story worth wearing."
-    />
-    <meta
-      property="og:image"
-      content="https://Fakhamah.com/image/products/og-image.jpg"
-    />
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://Fakhamah.com/" />
-    <meta property="twitter:title" content="Fakhamah | Luxury Perfumes Egypt" />
-    <meta
-      property="twitter:description"
-      content="Curated niche and designer  delivered across Egypt. Every bottle has a story worth wearing."
-    />
-    <meta
-      property="twitter:image"
-      content="https://Fakhamah.com/image/products/og-image.jpg"
-    />
+  <!-- ========================= -->
+  <!-- Meta & SEO               -->
+  <!-- ========================= -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="title" content="Fakhamah | Luxury Perfumes Egypt" />
+  <meta
+    name="description"
+    content="Discover Fakhamah's curated niche and designer perfumes. Premium imported oils, long-lasting performance, and elegant packaging. Fast delivery across Egypt."
+  />
+  <meta
+    name="keywords"
+    content="perfumes, luxury perfumes, niche perfumes, Fakhamah, Egyptian perfumes, imported perfumes, long lasting perfumes, high quality perfumes, men perfume, women perfume, perfume, luxury perfume egypt, best perfume egypt"
+  />
+  <meta name="robots" content="index, follow" />
+  <meta name="language" content="English" />
+  <meta name="author" content="Fakhamah" />
 
-    <!-- Canonical Link -->
-    <link rel="canonical" href="https://Fakhamah.com/" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Product Details | FAKHAMAH</title>
-    <link
-      rel="icon"
-      type="image/png"
-      href="https://i.postimg.cc/t4pyxgRD/Logo.png"
-    />
-    <link rel="stylesheet" href="styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-  </head>
-  <body>
-    <nav class="navbar" id="navbar">
-      <a href="index.html" class="nav-brand">FAKHAMAH</a>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="shop.html" class="active">Shop</a></li>
-        <li><a href="index.html#categories">Categories</a></li>
-        <!-- <li><a href="index.html#reviews">Reviews</a></li> -->
-        <li><a href="index.html#faq">FAQ</a></li>
-        <li><a href="index.html#about">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <div class="nav-icons">
-        <!-- <button class="icon-btn"><i class="fa-solid fa-magnifying-glass"></i></button> -->
-        <a href="checkout.html" class="icon-btn cart-icon-btn"
-          ><i class="fa-solid fa-bag-shopping"></i
-          ><span class="cart-count" id="cartCount">0</span></a
-        >
-        <button class="hamburger" id="hamburger">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </nav>
-    <!-- Mobile menu same -->
-    <div class="mobile-overlay" id="mobileOverlay"></div>
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://Fakhamah.com/" />
+  <meta property="og:title" content="Fakhamah | Luxury Perfumes Egypt" />
+  <meta
+    property="og:description"
+    content="Curated niche and designer perfumes delivered across Egypt. Every bottle has a story worth wearing."
+  />
+  <meta
+    property="og:image"
+    content="https://Fakhamah.com/image/products/og-image.jpg"
+  />
 
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="index.html">Home</a>
-      <a href="shop.html">Shop</a>
-      <a href="index.html#categories">Categories</a>
-      <a href="index.html#faq">FAQ</a>
-      <a href="index.html#about">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="checkout.html">Cart</a>
+  <!-- Twitter Card -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://Fakhamah.com/" />
+  <meta property="twitter:title" content="Fakhamah | Luxury Perfumes Egypt" />
+  <meta
+    property="twitter:description"
+    content="Curated niche and designer perfumes delivered across Egypt. Every bottle has a story worth wearing."
+  />
+  <meta
+    property="twitter:image"
+    content="https://Fakhamah.com/image/products/og-image.jpg"
+  />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://Fakhamah.com/" />
+
+  <!-- Favicon -->
+  <link
+    rel="icon"
+    type="image/png"
+    href="https://i.postimg.cc/t4pyxgRD/Logo.png"
+  />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+
+  <title>Product Details | FAKHAMAH</title>
+</head>
+<body>
+  <!-- ========================= -->
+  <!-- NAVBAR                    -->
+  <!-- ========================= -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-brand">FAKHAMAH</a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html" class="active">Shop</a></li>
+      <li><a href="index.html#categories">Categories</a></li>
+      <!-- <li><a href="index.html#reviews">Reviews</a></li> -->
+      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="nav-icons">
+      <!-- <button class="icon-btn"><i class="fa-solid fa-magnifying-glass"></i></button> -->
+      <a href="checkout.html" class="icon-btn cart-icon-btn">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </a>
+      <button class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <!--  -->
-    <main class="product-detail-page" id="productDetail">
-      <!-- dynamically filled by JS -->
-    </main>
-    <footer class="footer"><!-- simplified footer --></footer>
-    <!-- FEATURED PRODUCTS (mini slider) -->
-    <section class="section products-section" id="shop">
-      <div class="section-header reveal">
-        <span class="section-tag">Featured Collection</span>
-        <h2 class="section-title">Bestselling Fragrances</h2>
-        <div class="section-line"></div>
+  </nav>
+
+  <!-- Mobile overlay and menu (placed right after nav) -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="index.html#categories">Categories</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- ========================= -->
+  <!-- PRODUCT DETAIL SECTION    -->
+  <!-- ========================= -->
+  <main class="product-detail-page" id="productDetail">
+    <!-- Dynamically filled by JS -->
+  </main>
+
+  <!-- ========================= -->
+  <!-- FOOTER                    -->
+  <!-- ========================= -->
+  <footer class="footer">
+    <!-- Simplified footer placeholder -->
+  </footer>
+
+  <!-- ========================= -->
+  <!-- FEATURED PRODUCTS SLIDER  -->
+  <!-- (Placed after footer as per original structure) -->
+  <!-- ========================= -->
+  <section class="section products-section" id="shop">
+    <div class="section-header reveal">
+      <span class="section-tag">Featured Collection</span>
+      <h2 class="section-title">Bestselling Fragrances</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="slider-container reveal">
+      <button class="slider-arrow prev" id="sliderPrev">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <div class="slider-track-wrapper">
+        <div class="slider-track" id="sliderTrack"></div>
       </div>
-      <div class="slider-container reveal">
-        <button class="slider-arrow prev" id="sliderPrev">
-          <i class="fa-solid fa-chevron-left"></i>
-        </button>
-        <div class="slider-track-wrapper">
-          <div class="slider-track" id="sliderTrack"></div>
-        </div>
-        <button class="slider-arrow next" id="sliderNext">
-          <i class="fa-solid fa-chevron-right"></i>
-        </button>
-        <div class="slider-dots" id="sliderDots"></div>
-      </div>
-    </section>
-    <script src="script.js"></script>
-  </body>
+      <button class="slider-arrow next" id="sliderNext">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+      <div class="slider-dots" id="sliderDots"></div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
 </html>

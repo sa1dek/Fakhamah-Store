@@ -1,9 +1,18 @@
-<!-- ============================================
-FILE: shop.html
-============================================ -->
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- ========================= -->
+    <!-- DNS Prefetch & Preconnect -->
+    <!-- ========================= -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+
+    <!-- ========================= -->
+    <!-- Meta & SEO               -->
+    <!-- ========================= -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="title" content="Fakhamah | Luxury Perfumes Egypt" />
     <meta
       name="description"
@@ -11,17 +20,16 @@ FILE: shop.html
     />
     <meta
       name="keywords"
-      content="عطور, عطور فخمة, عطور نيتش, Fakhamah, ليال, عطور مصر, عطور مستوردة, عطور تدوم طويلاً, عطور بجودة عالية, عطور رجالي, عطور نسائي, perfume, luxury perfume egypt, best perfume egypt"
+      content="perfume, luxury perfume egypt, best perfume egypt, Fakhamah, niche perfumes, long lasting perfume, premium quality perfume, men perfume, women perfume, imported perfumes"
     />
     <meta name="robots" content="index, follow" />
     <meta name="language" content="English" />
     <meta name="author" content="Fakhamah" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://Fakhamah.com/" />
-    <meta property="og:title" content="Fakhamah  | Luxury Perfumes Egypt" />
+    <meta property="og:title" content="Fakhamah | Luxury Perfumes Egypt" />
     <meta
       property="og:description"
       content="Curated niche and designer  delivered across Egypt. Every bottle has a story worth wearing."
@@ -30,7 +38,8 @@ FILE: shop.html
       property="og:image"
       content="https://Fakhamah.com/image/products/og-image.jpg"
     />
-    <!-- Twitter -->
+
+    <!-- Twitter Card -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://Fakhamah.com/" />
     <meta property="twitter:title" content="Fakhamah | Luxury Perfumes Egypt" />
@@ -43,26 +52,32 @@ FILE: shop.html
       content="https://Fakhamah.com/image/products/og-image.jpg"
     />
 
-    <!-- Canonical Link -->
+    <!-- Canonical -->
     <link rel="canonical" href="https://Fakhamah.com/" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shop | FAKHAMAH</title>
+
+    <!-- Favicon -->
     <link
       rel="icon"
       type="image/png"
       href="https://i.postimg.cc/t4pyxgRD/Logo.png"
     />
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+
+    <title>Shop | FAKHAMAH</title>
   </head>
   <body>
-    <!-- NAVBAR (same structure, just active link changed) -->
+    <!-- ========================= -->
+    <!-- NAVBAR                    -->
+    <!-- ========================= -->
     <nav class="navbar" id="navbar">
       <a href="index.html" class="nav-brand">FAKHAMAH</a>
+
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="shop.html" class="active">Shop</a></li>
@@ -72,40 +87,51 @@ FILE: shop.html
         <li><a href="index.html#about">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
+
       <div class="nav-icons">
         <!-- <button class="icon-btn"><i class="fa-solid fa-magnifying-glass"></i></button> -->
-        <a href="checkout.html" class="icon-btn cart-icon-btn"
-          ><i class="fa-solid fa-bag-shopping"></i
-          ><span class="cart-count" id="cartCount">0</span></a
-        >
+        <a href="checkout.html" class="icon-btn cart-icon-btn">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
         <button class="hamburger" id="hamburger">
           <span></span><span></span><span></span>
         </button>
       </div>
     </nav>
-    <!-- Mobile menu same -->
-    <div class="mobile-overlay" id="mobileOverlay"></div>
 
+    <!-- Mobile overlay and menu (after closing nav tag directly) -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
     <div class="mobile-menu" id="mobileMenu">
       <a href="index.html">Home</a>
       <a href="shop.html">Shop</a>
       <a href="index.html#categories">Categories</a>
-      <a href="index.html#faq">FAQ</a>
       <a href="index.html#about">About</a>
+      <a href="index.html#faq">FAQ</a>
       <a href="contact.html">Contact</a>
-      <a href="checkout.html">Cart</a>
     </div>
-    <!--  -->
+
+    <!-- ========================= -->
+    <!-- MAIN SHOP CONTENT         -->
+    <!-- ========================= -->
     <main class="shop-page">
       <div class="section-header" style="padding-top: 6rem">
         <span class="section-tag">All Products</span>
         <h2 class="section-title">Our Collection</h2>
         <div class="section-line"></div>
       </div>
+
       <div class="products-grid" id="productsGrid"></div>
     </main>
 
-    <footer class="footer"><!-- simplified footer --></footer>
+    <!-- ========================= -->
+    <!-- FOOTER                    -->
+    <!-- ========================= -->
+    <footer class="footer">
+      <!-- Simplified footer placeholder -->
+    </footer>
+
+    <!-- Scripts -->
     <script src="script.js"></script>
   </body>
 </html>

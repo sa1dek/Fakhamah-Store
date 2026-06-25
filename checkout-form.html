@@ -1,65 +1,83 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- ========================= -->
+    <!-- DNS Prefetch & Preconnect -->
+    <!-- ========================= -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+
+    <!-- ========================= -->
+    <!-- Meta & SEO               -->
+    <!-- ========================= -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="title" content="Fakhamah | Luxury Perfumes Egypt" />
     <meta
       name="description"
-      content="Discover Fakhamah's curated niche and designer . Premium imported oils, long-lasting performance, and elegant packaging. Fast delivery across Egypt."
+      content="Discover Fakhamah's curated niche and designer perfumes. Premium imported oils, long-lasting performance, and elegant packaging. Fast delivery across Egypt."
     />
     <meta
       name="keywords"
-      content="عطور, عطور فخمة, عطور نيتش, Fakhamah, ليال, عطور مصر, عطور مستوردة, عطور تدوم طويلاً, عطور بجودة عالية, عطور رجالي, عطور نسائي, perfume, luxury perfume egypt, best perfume egypt"
+      content="perfume, luxury perfume, niche perfume, Fakhamah, Egyptian perfume, imported perfume, long lasting perfume, high quality perfume, men perfume, women perfume, luxury perfume egypt, best perfume egypt"
     />
     <meta name="robots" content="index, follow" />
     <meta name="language" content="English" />
     <meta name="author" content="Fakhamah" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://Fakhamah.com/" />
-    <meta property="og:title" content="Fakhamah  | Luxury Perfumes Egypt" />
+    <meta property="og:title" content="Fakhamah | Luxury Perfumes Egypt" />
     <meta
       property="og:description"
-      content="Curated niche and designer  delivered across Egypt. Every bottle has a story worth wearing."
+      content="Curated niche and designer perfumes delivered across Egypt. Every bottle has a story worth wearing."
     />
     <meta
       property="og:image"
       content="https://Fakhamah.com/image/products/og-image.jpg"
     />
-    <!-- Twitter -->
+
+    <!-- Twitter Card -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://Fakhamah.com/" />
     <meta property="twitter:title" content="Fakhamah | Luxury Perfumes Egypt" />
     <meta
       property="twitter:description"
-      content="Curated niche and designer  delivered across Egypt. Every bottle has a story worth wearing."
+      content="Curated niche and designer perfumes delivered across Egypt. Every bottle has a story worth wearing."
     />
     <meta
       property="twitter:image"
       content="https://Fakhamah.com/image/products/og-image.jpg"
     />
 
-    <!-- Canonical Link -->
+    <!-- Canonical -->
     <link rel="canonical" href="https://Fakhamah.com/" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Complete Your Order | FAKHAMAH</title>
+
+    <!-- Favicon -->
     <link
       rel="icon"
       type="image/png"
       href="https://i.postimg.cc/t4pyxgRD/Logo.png"
     />
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+
+    <title>Complete Your Order | FAKHAMAH</title>
   </head>
   <body>
-    <!-- NAVBAR -->
+    <!-- ========================= -->
+    <!-- NAVBAR                    -->
+    <!-- ========================= -->
     <nav class="navbar" id="navbar">
       <a href="index.html" class="nav-brand">FAKHAMAH</a>
+
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="shop.html">Shop</a></li>
@@ -69,6 +87,7 @@
         <li><a href="index.html#about">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
+
       <div class="nav-icons">
         <button class="icon-btn">
           <i class="fa-solid fa-magnifying-glass"></i>
@@ -82,6 +101,8 @@
         </button>
       </div>
     </nav>
+
+    <!-- Mobile Overlay & Menu -->
     <div class="mobile-overlay" id="mobileOverlay"></div>
     <div class="mobile-menu" id="mobileMenu">
       <a href="index.html">Home</a>
@@ -93,6 +114,9 @@
       <a href="contact.html">Contact</a>
     </div>
 
+    <!-- ========================= -->
+    <!-- CHECKOUT FORM             -->
+    <!-- ========================= -->
     <main style="padding: 8rem 2rem 4rem; max-width: 600px; margin: 0 auto">
       <div class="section-header reveal">
         <span class="section-tag">Delivery Details</span>
@@ -127,8 +151,9 @@
               margin-bottom: 0.5rem;
               color: var(--text-secondary);
             "
-            >Full Name *</label
           >
+            Full Name *
+          </label>
           <input
             type="text"
             id="fullName"
@@ -137,6 +162,7 @@
             style="width: 100%"
           />
         </div>
+
         <div style="margin-bottom: 1rem">
           <label
             style="
@@ -144,8 +170,9 @@
               margin-bottom: 0.5rem;
               color: var(--text-secondary);
             "
-            >WhatsApp Number *</label
           >
+            WhatsApp Number *
+          </label>
           <input
             type="tel"
             id="whatsappNumber"
@@ -154,6 +181,7 @@
             style="width: 100%"
           />
         </div>
+
         <div style="margin-bottom: 1rem">
           <label
             style="
@@ -161,8 +189,9 @@
               margin-bottom: 0.5rem;
               color: var(--text-secondary);
             "
-            >Alternative Phone</label
           >
+            Alternative Phone
+          </label>
           <input
             type="tel"
             id="altPhone"
@@ -170,6 +199,7 @@
             style="width: 100%"
           />
         </div>
+
         <div style="margin-bottom: 1rem">
           <label
             style="
@@ -177,8 +207,9 @@
               margin-bottom: 0.5rem;
               color: var(--text-secondary);
             "
-            >Detailed Address *</label
           >
+            Detailed Address *
+          </label>
           <textarea
             id="address"
             rows="3"
@@ -187,41 +218,22 @@
             style="width: 100%"
           ></textarea>
         </div>
-        <div style="margin-bottom: 1.5rem">
-          <label
-            style="
-              display: block;
-              margin-bottom: 0.5rem;
-              color: var(--text-secondary);
-            "
-            >Additional Options</label
-          >
-          <div style="display: flex; flex-wrap: wrap; gap: 1.5rem">
-            <label
-              style="
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-                color: var(--text-secondary);
-                cursor: pointer;
-              "
-            >
-              <input type="checkbox" id="giftWrap" /> Gift Wrapping (+20 EGP)
-            </label>
-            <label
-              style="
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-                color: var(--text-secondary);
-                cursor: pointer;
-              "
-            >
-              <input type="checkbox" id="expressDelivery" /> Express Delivery
-              (+50 EGP)
-            </label>
-          </div>
+
+        <!-- Additional options commented out -->
+        <!--
+      <div style="margin-bottom: 1.5rem">
+        <label ...>Additional Options</label>
+        <div style="display: flex; flex-wrap: wrap; gap: 1.5rem">
+          <label ...>
+            <input type="checkbox" id="giftWrap" /> Gift Wrapping (+20 EGP)
+          </label>
+          <label ...>
+            <input type="checkbox" id="expressDelivery" /> Express Delivery (+50 EGP)
+          </label>
         </div>
+      </div>
+      -->
+
         <div style="margin-bottom: 1.5rem">
           <label
             style="
@@ -229,8 +241,9 @@
               margin-bottom: 0.5rem;
               color: var(--text-secondary);
             "
-            >Order Notes</label
           >
+            Order Notes
+          </label>
           <textarea
             id="orderNotes"
             rows="3"
@@ -238,9 +251,11 @@
             style="width: 100%"
           ></textarea>
         </div>
+
         <button type="submit" class="btn btn-gold" style="width: 100%">
           <i class="fa-solid fa-lock"></i> Place Order
         </button>
+
         <p
           id="formSuccess"
           style="color: #27ae60; margin-top: 1rem; display: none"
@@ -250,17 +265,51 @@
       </form>
     </main>
 
+    <!-- ========================= -->
+    <!-- FOOTER                    -->
+    <!-- ========================= -->
     <footer class="footer">
       <div class="footer-bottom">
         <p>&copy; 2026 FAKHAMAH. All rights reserved.</p>
       </div>
     </footer>
 
+    <!-- ========================= -->
+    <!-- LOADING OVERLAY           -->
+    <!-- ========================= -->
+    <div
+      id="loadingOverlay"
+      style="
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.85);
+        z-index: 9999;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <div class="loader"></div>
+      <p
+        style="
+          color: var(--gold);
+          margin-top: 1.5rem;
+          font-family: var(--font-heading);
+          letter-spacing: 2px;
+        "
+      >
+        Processing your order...
+      </p>
+    </div>
+
+    <!-- ========================= -->
+    <!-- SCRIPTS                   -->
+    <!-- ========================= -->
     <script src="script.js"></script>
     <script>
       const GOOGLE_SCRIPT_URL =
         "https://script.google.com/macros/s/AKfycbzsicGI_N0u1799zwiDmuOdlGQCMBEOiwQ627GW2KAkiti4z0qxgEdwwuysIfpQMxqm3Q/exec";
-
       const CART_KEY = "FAKHAMAHCart";
 
       function getCart() {
@@ -285,11 +334,11 @@
 
         if (cart.length === 0) {
           preview.innerHTML = `
-                    <div style="text-align:center; padding:1.5rem;">
-                        <i class="fa-solid fa-bag-shopping" style="font-size:3rem; color:var(--text-muted);"></i>
-                        <p style="color:var(--text-muted); margin-top:1rem;">Your cart is empty.</p>
-                        <a href="shop.html" class="btn btn-gold" style="margin-top:1rem; display:inline-block;">Continue Shopping</a>
-                    </div>`;
+          <div style="text-align:center; padding:1.5rem;">
+            <i class="fa-solid fa-bag-shopping" style="font-size:3rem; color:var(--text-muted);"></i>
+            <p style="color:var(--text-muted); margin-top:1rem;">Your cart is empty.</p>
+            <a href="shop.html" class="btn btn-gold" style="margin-top:1rem; display:inline-block;">Continue Shopping</a>
+          </div>`;
           form.style.display = "none";
           return;
         }
@@ -297,10 +346,10 @@
         form.style.display = "block";
         const total = cart.reduce((sum, i) => sum + i.price * i.quantity, 0);
         preview.innerHTML = `
-                <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <span>📦 ${cart.length} item(s)</span>
-                    <span style="color:var(--gold); font-weight:bold;">Total: ${total} EGP</span>
-                </div>`;
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span>📦 ${cart.length} item(s)</span>
+          <span style="color:var(--gold); font-weight:bold;">Total: ${total} EGP</span>
+        </div>`;
       }
 
       async function sendToGoogleSheets(data) {
@@ -313,7 +362,7 @@
           });
           return true;
         } catch (error) {
-          console.error("Error sending to Google Sheets:", error);
+          console.error("Error:", error);
           return false;
         }
       }
@@ -329,14 +378,10 @@
             .value.trim();
           const altPhone = document.getElementById("altPhone").value.trim();
           const address = document.getElementById("address").value.trim();
-          const giftWrap = document.getElementById("giftWrap").checked;
-          const express = document.getElementById("expressDelivery").checked;
           const notes = document.getElementById("orderNotes").value.trim();
 
           if (!fullName || !whatsapp || !address) {
-            alert(
-              "Please fill in all required fields (Name, WhatsApp, Address).",
-            );
+            alert("Please fill in all required fields.");
             return;
           }
 
@@ -346,21 +391,25 @@
             return;
           }
 
+          // Show loading overlay
+          const loadingOverlay = document.getElementById("loadingOverlay");
+          loadingOverlay.style.display = "flex";
+
+          // Disable submit button
+          const submitBtn = this.querySelector('button[type="submit"]');
+          submitBtn.disabled = true;
+          submitBtn.textContent = "Processing...";
+
           const total = cart.reduce(
             (sum, item) => sum + item.price * item.quantity,
             0,
           );
-          const cartItemsStr = cart
-            .map((item) => `${item.name} x${item.quantity}`)
-            .join(", ");
 
           const orderData = {
             fullName,
             whatsapp,
             altPhone,
             address,
-            giftWrap,
-            expressDelivery: express,
             notes,
             cartItems: cart
               .map((item) => `${item.name} (${item.size}) x${item.quantity}`)
@@ -368,16 +417,22 @@
             total: total + " EGP",
             date: new Date().toISOString(),
           };
-          
+
           const success = await sendToGoogleSheets(orderData);
 
           if (success) {
-            // مسح السلة والتوجيه لصفحة الشكر
             saveCart([]);
             updateCartCount();
-            window.location.href = "thankyou.html";
+            // Delay a bit then redirect
+            setTimeout(() => {
+              window.location.href = "thankyou.html";
+            }, 800);
           } else {
-            alert("There was an error placing your order. Please try again.");
+            loadingOverlay.style.display = "none";
+            submitBtn.disabled = false;
+            submitBtn.innerHTML =
+              '<i class="fa-solid fa-lock"></i> Place Order';
+            alert("There was an error. Please try again.");
           }
         });
 

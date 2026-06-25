@@ -1,60 +1,76 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- ========================= -->
+    <!-- DNS Prefetch & Preconnect -->
+    <!-- ========================= -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+
+    <!-- ========================= -->
+    <!-- Meta & SEO               -->
+    <!-- ========================= -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="title" content="Fakhamah | Luxury Perfumes Egypt" />
     <meta
       name="description"
-      content="Discover Fakhamah's curated niche and designer . Premium imported oils, long-lasting performance, and elegant packaging. Fast delivery across Egypt."
+      content="Discover Fakhamah's curated niche and designer perfumes. Premium imported oils, long-lasting performance, and elegant packaging. Fast delivery across Egypt."
     />
     <meta
       name="keywords"
-      content="عطور, عطور فخمة, عطور نيتش, Fakhamah, ليال, عطور مصر, عطور مستوردة, عطور تدوم طويلاً, عطور بجودة عالية, عطور رجالي, عطور نسائي, perfume, luxury perfume egypt, best perfume egypt"
+      content="perfume, luxury perfume, niche perfume, Fakhamah, Egyptian perfume, imported perfume, long lasting perfume, high quality perfume, men perfume, women perfume, luxury perfume egypt, best perfume egypt"
     />
     <meta name="robots" content="index, follow" />
     <meta name="language" content="English" />
     <meta name="author" content="Fakhamah" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://Fakhamah.com/" />
-    <meta property="og:title" content="Fakhamah  | Luxury Perfumes Egypt" />
+    <meta property="og:title" content="Fakhamah | Luxury Perfumes Egypt" />
     <meta
       property="og:description"
-      content="Curated niche and designer  delivered across Egypt. Every bottle has a story worth wearing."
+      content="Curated niche and designer perfumes delivered across Egypt. Every bottle has a story worth wearing."
     />
     <meta
       property="og:image"
       content="https://Fakhamah.com/image/products/og-image.jpg"
     />
-    <!-- Twitter -->
+
+    <!-- Twitter Card -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://Fakhamah.com/" />
     <meta property="twitter:title" content="Fakhamah | Luxury Perfumes Egypt" />
     <meta
       property="twitter:description"
-      content="Curated niche and designer  delivered across Egypt. Every bottle has a story worth wearing."
+      content="Curated niche and designer perfumes delivered across Egypt. Every bottle has a story worth wearing."
     />
     <meta
       property="twitter:image"
       content="https://Fakhamah.com/image/products/og-image.jpg"
     />
 
-    <!-- Canonical Link -->
+    <!-- Canonical -->
     <link rel="canonical" href="https://Fakhamah.com/" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Thank You | FAKHAMAH</title>
+
+    <!-- Favicon -->
     <link
       rel="icon"
       type="image/png"
       href="https://i.postimg.cc/t4pyxgRD/Logo.png"
     />
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+
+    <title>Thank You | FAKHAMAH</title>
+
     <style>
       body {
         display: flex;
@@ -65,16 +81,19 @@
         background: var(--bg-primary);
         flex-direction: column;
       }
+
       .thankyou-container {
         text-align: center;
         animation: fadeInUp 0.8s ease;
       }
+
       .thankyou-icon {
         font-size: 6rem;
         color: var(--gold);
         margin-bottom: 1.5rem;
         animation: scaleIn 0.6s ease 0.2s both;
       }
+
       .thankyou-title {
         font-family: var(--font-heading);
         font-size: 4rem;
@@ -83,12 +102,14 @@
         margin-bottom: 1rem;
         animation: fadeInUp 0.8s ease 0.4s both;
       }
+
       .thankyou-subtitle {
         color: var(--text-secondary);
         margin-bottom: 2.5rem;
         font-size: 1.1rem;
         animation: fadeInUp 0.8s ease 0.6s both;
       }
+
       @keyframes fadeInUp {
         from {
           opacity: 0;
@@ -99,6 +120,7 @@
           transform: translateY(0);
         }
       }
+
       @keyframes scaleIn {
         from {
           transform: scale(0);
@@ -116,8 +138,11 @@
       <div class="thankyou-icon">
         <i class="fa-solid fa-circle-check"></i>
       </div>
+
       <h1 class="thankyou-title">Thank You</h1>
+
       <p class="thankyou-subtitle">Your order has been placed successfully</p>
+
       <a href="shop.html" class="btn btn-gold">
         <i class="fa-solid fa-bag-shopping"></i> Order Again
       </a>

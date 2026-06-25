@@ -1,77 +1,54 @@
+// ============================================
+// FILE: script.js
+// DESCRIPTION: Core functionality for FAKHAMAH
+// ============================================
+
 // ========== GLOBAL STATE ==========
 const products = [
   {
     id: 1,
-    name: "Bali",
+    name: "Jswr",
     inspired: "Summer Hammer",
-    price: 450,
-    oldPrice: 600,
+    price: 320,
+    oldPrice: 400,
     rating: 5,
     discount: "25%",
-    image: "https://i.postimg.cc/jqLpw7HW/Per1.jpg",
+    image: "https://i.postimg.cc/fyL3bCjP/jswr.jpg",
     description: "Tropical fruity notes with warm amber.",
-    prices: {
-      "30ml": 315,
-      "50ml": 275,
-      "100ml": 585,
-    },
-    stock: { "30ml": 0, "50ml":1, "100ml": 3 },
+    prices: { "30ml": 315, "50ml": 320, "100ml": 660 },
+    stock: { "30ml": 0, "50ml": 10, "100ml": 0 },
   },
   {
     id: 2,
-    name: "Blue Night",
+    name: "Ghsq",
     inspired: "Y Eau De Perfume",
-    price: 520,
+    price: 320,
     oldPrice: 680,
     rating: 5,
     discount: "23%",
-    image: "https://i.postimg.cc/FHg85g4g/Per2.jpg",
+    image: "https://i.postimg.cc/wvWvnJ8m/Ghsq.jpg",
     description: "Fresh aromatic with deep woody base.",
-    prices: {
-      "30ml": 315,
-      "50ml": 450,
-      "100ml": 585,
-    },
-    stock: { "30ml": 0, "50ml": 5, "100ml": 3 },
+    prices: { "30ml": 315, "50ml": 320, "100ml": 585 },
+    stock: { "30ml": 0, "50ml": 10, "100ml": 0 },
   },
   {
     id: 3,
-    name: "Tuxedo",
+    name: "Nsym",
     inspired: "Apple Brandy",
-    price: 580,
+    price: 320,
     oldPrice: 750,
     rating: 4,
     discount: "22%",
-    image: "https://i.postimg.cc/vm0KDYDg/Per3.jpg",
+    image: "https://i.postimg.cc/fWryKxfP/Nsym.jpg",
     description: "Spicy apple with boozy vanilla.",
-    prices: {
-      "30ml": 315,
-      "50ml": 450,
-      "100ml": 585,
-    },
-    stock: { "30ml": 0, "50ml": 3, "100ml": 2 },
-  },
-  {
-    id: 4,
-    name: "Maldives",
-    inspired: "Le Beau Paradise Garden",
-    price: 490,
-    oldPrice: 640,
-    rating: 5,
-    discount: "23%",
-    image: "https://i.postimg.cc/G2NSJXFv/Per4.jpg",
-    description: "Citrus marine with coconut water.",
-    prices: {
-      "30ml": 315,
-      "50ml": 450,
-      "100ml": 585,
-    },
-    stock: { "30ml": 0, "50ml": 5, "100ml": 0 },
+    prices: { "30ml": 315, "50ml": 320, "100ml": 585 },
+    stock: { "30ml": 0, "50ml": 10, "100ml": 0 },
   },
 ];
 
 // Cart stored in localStorage
 let cart = JSON.parse(localStorage.getItem("FAKHAMAHCart")) || [];
+
 // ========== NAVBAR & MOBILE MENU ==========
 const navbar = document.getElementById("navbar");
 const hamburger = document.getElementById("hamburger");
@@ -81,35 +58,43 @@ const mobileOverlay = document.getElementById("mobileOverlay");
 if (hamburger) {
   hamburger.addEventListener("click", () => {
     hamburger.classList.toggle("active");
-    mobileMenu.classList.toggle("active");
-    mobileOverlay.classList.toggle("active");
-    document.body.style.overflow = mobileMenu.classList.contains("active")
-      ? "hidden"
-      : "";
+    if (mobileMenu) mobileMenu.classList.toggle("active");
+    if (mobileOverlay) mobileOverlay.classList.toggle("active");
+    document.body.style.overflow =
+      mobileMenu && mobileMenu.classList.contains("active") ? "hidden" : "";
   });
-  mobileOverlay?.addEventListener("click", () => {
-    hamburger.classList.remove("active");
-    mobileMenu.classList.remove("active");
-    mobileOverlay.classList.remove("active");
-    document.body.style.overflow = "";
-  });
-  mobileMenu?.querySelectorAll("a").forEach((link) =>
-    link.addEventListener("click", () => {
+
+  if (mobileOverlay) {
+    mobileOverlay.addEventListener("click", () => {
       hamburger.classList.remove("active");
-      mobileMenu.classList.remove("active");
+      if (mobileMenu) mobileMenu.classList.remove("active");
       mobileOverlay.classList.remove("active");
       document.body.style.overflow = "";
-    }),
-  );
+    });
+  }
+
+  if (mobileMenu) {
+    mobileMenu.querySelectorAll("a").forEach((link) =>
+      link.addEventListener("click", () => {
+        hamburger.classList.remove("active");
+        mobileMenu.classList.remove("active");
+        if (mobileOverlay) mobileOverlay.classList.remove("active");
+        document.body.style.overflow = "";
+      }),
+    );
+  }
 }
 
+// Navbar scroll effect
 window.addEventListener("scroll", () => {
   if (navbar) navbar.classList.toggle("scrolled", window.scrollY > 50);
 });
+
 // ========== CART FUNCTIONS ==========
 function saveCart() {
   localStorage.setItem("FAKHAMAHCart", JSON.stringify(cart));
 }
+
 function updateCartCount() {
   const countEl = document.getElementById("cartCount");
   if (countEl) {
@@ -117,22 +102,26 @@ function updateCartCount() {
     countEl.textContent = total;
   }
 }
+
 function addToCart(productId, quantity = 1) {
   const existing = cart.find((item) => item.id === productId);
-  if (existing) existing.quantity += quantity;
-  else {
+  if (existing) {
+    existing.quantity += quantity;
+  } else {
     const product = products.find((p) => p.id === productId);
-    if (product)
+    if (product) {
       cart.push({
         id: product.id,
         name: product.name,
         price: product.price,
         quantity,
       });
+    }
   }
   saveCart();
   updateCartCount();
-  // bump animation
+
+  // Trigger cart icon bump animation
   const countEl = document.getElementById("cartCount");
   if (countEl) {
     countEl.classList.remove("bump");
@@ -140,56 +129,47 @@ function addToCart(productId, quantity = 1) {
     countEl.classList.add("bump");
   }
 }
+
 function removeFromCart(productId) {
   cart = cart.filter((item) => item.id !== productId);
   saveCart();
   updateCartCount();
 }
-// ========== RENDER PRODUCT CARD (reusable) ==========
+
+// ========== PRODUCT CARD RENDERING ==========
 function createProductCard(product, showAddToCart = true) {
   const card = document.createElement("div");
   card.className = "product-card";
   card.innerHTML = `
     <div class="product-img"
-    style="
-        background-image:url('${product.image}');
-        background-size:cover;
-        background-position:center;
-        background-repeat:no-repeat;
-    ">
-        <span class="discount-badge">-${product.discount}</span>
+      style="
+        background-image: url('${product.image}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      ">
     </div>
-
     <h3>${product.name}</h3>
-    <p class="inspired-by">
-        Inspired by ${product.inspired}
-    </p>
-
+    <p class="inspired-by">Inspired by ${product.inspired}</p>
     <span class="price-current">${product.price} EGP</span>
-    <span class="price-old">${product.oldPrice} EGP</span>
-
-    <div class="stars">
-        ${"★".repeat(product.rating)}
-        ${"☆".repeat(5 - product.rating)}
-    </div>
-
     ${
       showAddToCart
-        ? `<button class="btn-add-cart" data-id="${product.id}">
-            Add To Cart
-         </button>`
+        ? `<button class="btn-add-cart" data-id="${product.id}">Add To Cart</button>`
         : ""
     }
-`;
+  `;
+
   if (showAddToCart) {
     card.querySelector(".btn-add-cart").addEventListener("click", (e) => {
       e.stopPropagation();
       addToCart(product.id);
+
       const btn = e.target;
       btn.textContent = "✓ Added!";
       btn.style.background = "#27ae60";
       btn.style.borderColor = "#27ae60";
       btn.style.color = "#fff";
+
       setTimeout(() => {
         btn.textContent = "Add to Cart";
         btn.style.background = "";
@@ -198,20 +178,25 @@ function createProductCard(product, showAddToCart = true) {
       }, 1500);
     });
   }
+
+  // Navigate to product detail page on card click
   card.addEventListener("click", () => {
     window.location.href = `product.html?id=${product.id}`;
   });
+
   return card;
 }
-// ========== HOME PAGE: SLIDER ==========
+
+// ========== HOMEPAGE PRODUCT SLIDER ==========
 const sliderTrack = document.getElementById("sliderTrack");
 if (sliderTrack) {
   const allProducts = [...products, ...products, ...products];
   allProducts.forEach((p) => sliderTrack.appendChild(createProductCard(p)));
+
   let index = products.length;
   let autoSlideTimer;
 
-  const updateSlider = (animate = true) => {
+  function updateSlider(animate = true) {
     const cardWidth =
       sliderTrack.querySelector(".product-card")?.offsetWidth || 300;
     sliderTrack.style.transition = animate ? "transform 0.5s ease" : "none";
@@ -221,8 +206,9 @@ if (sliderTrack) {
     dots.forEach((dot, i) => {
       dot.classList.toggle("active", i === index % products.length);
     });
-  };
+  }
 
+  // Create dot indicators
   const dotsContainer = document.getElementById("sliderDots");
   if (dotsContainer) {
     for (let i = 0; i < products.length; i++) {
@@ -242,6 +228,7 @@ if (sliderTrack) {
     autoSlideTimer = setInterval(() => {
       index++;
       updateSlider();
+      // Loop seamlessly when reaching cloned end
       if (index >= products.length * 2) {
         setTimeout(() => {
           index = products.length;
@@ -263,6 +250,7 @@ if (sliderTrack) {
     startAutoSlide();
   }
 
+  // Arrow navigation
   document.getElementById("sliderPrev")?.addEventListener("click", () => {
     index--;
     updateSlider();
@@ -287,50 +275,26 @@ if (sliderTrack) {
     resetAutoSlide();
   });
 
+  // Initialize
   updateSlider(false);
   startAutoSlide();
 
+  // Pause auto-slide on hover
   const sliderContainer = document.querySelector(".slider-container");
   if (sliderContainer) {
     sliderContainer.addEventListener("mouseenter", stopAutoSlide);
     sliderContainer.addEventListener("mouseleave", startAutoSlide);
   }
 }
-// ========== HOME PAGE: TESTIMONIALS ==========
-const testimonialsTrack = document.getElementById("testimonialsTrack");
-if (testimonialsTrack) {
-  const reviews = [
-    {
-      name: "Ahmed K.",
-      comment: '"Stunning fragrances! Longevity is incredible."',
-      stars: 5,
-      avatar: "👨",
-    },
-    {
-      name: "Sarah M.",
-      comment: '"أفضل عطور جربتها! الجودة ممتازة والسعر مناسب."',
-      stars: 5,
-      avatar: "👩",
-    },
-    {
-      name: "Karim K.",
-      comment: '"Packaging is next-level. Perfect for gifting."',
-      stars: 5,
-      avatar: "👨",
-    },
-  ];
-  reviews.forEach((r) => {
-    const div = document.createElement("div");
-    div.className = "testimonial-card";
-    div.innerHTML = `<div style="font-size:3rem;">${r.avatar}</div><div class="stars">${"★".repeat(r.stars)}</div><p class="comment">${r.comment}</p><p style="color:var(--gold);">— ${r.name}</p>`;
-    testimonialsTrack.appendChild(div);
-  });
-}
-// ========== FAQ ==========
+
+// ========== FAQ SECTION ==========
 const faqContainer = document.getElementById("faqContainer");
 if (faqContainer) {
   const faqs = [
-    { q: "Refund Policy", a: "14-day refund on unopened products." },
+    {
+      q: "Refund Policy",
+      a: "14-day refund on unopened products.",
+    },
     {
       q: "How Guarantee Works",
       a: "Performance guarantee: contact us if issues.",
@@ -339,106 +303,40 @@ if (faqContainer) {
       q: "Fragrance Performance Guide",
       a: "Apply to pulse points, lasts 8-12h.",
     },
-    { q: "Shipping Cost", a: "Free shipping over 600 EGP" },
+    {
+      q: "Shipping Cost",
+      a: "Free shipping over 600 EGP",
+    },
   ];
+
   faqs.forEach((f) => {
     const item = document.createElement("div");
     item.className = "faq-item";
-    item.innerHTML = `<button class="faq-question">${f.q}<span class="faq-icon"><i class="fa-solid fa-plus"></i></span></button><div class="faq-answer"><p>${f.a}</p></div>`;
+    item.innerHTML = `
+      <button class="faq-question">
+        ${f.q}
+        <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+      </button>
+      <div class="faq-answer"><p>${f.a}</p></div>
+    `;
+
     item.querySelector("button").addEventListener("click", () => {
       item.classList.toggle("active");
     });
+
     faqContainer.appendChild(item);
   });
+
+  // Open first FAQ by default
   faqContainer.querySelector(".faq-item")?.classList.add("active");
 }
 
-// ========== COMPARISON SLIDER ==========
-const comparisonHandle = document.getElementById("comparisonHandle");
-const comparisonAfter = document.getElementById("comparisonAfter");
-if (comparisonHandle && comparisonAfter) {
-  let dragging = false;
-  const move = (clientX) => {
-    const rect = comparisonHandle.parentElement.getBoundingClientRect();
-    let percent = ((clientX - rect.left) / rect.width) * 100;
-    percent = Math.min(95, Math.max(5, percent));
-    comparisonAfter.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
-    comparisonHandle.style.left = percent + "%";
-  };
-  comparisonHandle.addEventListener("mousedown", (e) => {
-    dragging = true;
-    e.preventDefault();
-  });
-  window.addEventListener("mousemove", (e) => {
-    if (dragging) move(e.clientX);
-  });
-  window.addEventListener("mouseup", () => {
-    dragging = false;
-  });
-  comparisonHandle.addEventListener("touchstart", (e) => {
-    dragging = true;
-  });
-  window.addEventListener("touchmove", (e) => {
-    if (dragging) move(e.touches[0].clientX);
-  });
-  window.addEventListener("touchend", () => {
-    dragging = false;
-  });
-}
-
-// ========== COUNTER ANIMATION ==========
-const stats = document.querySelectorAll(".stat-number");
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const target = parseInt(el.dataset.target);
-        let start = 0;
-        const duration = 1500;
-        const startTime = performance.now();
-        const animate = (ts) => {
-          const progress = Math.min((ts - startTime) / duration, 1);
-          el.textContent =
-            Math.floor(progress * target) + (target >= 1000 ? "+" : " ★");
-          if (progress < 1) requestAnimationFrame(animate);
-          else el.textContent = target + (target >= 1000 ? "+" : " ★");
-        };
-        requestAnimationFrame(animate);
-        observer.unobserve(el);
-      }
-    });
-  },
-  { threshold: 0.5 },
-);
-stats.forEach((s) => observer.observe(s));
-
-// ========== NEWSLETTER ==========
-document
-  .getElementById("newsletterForm")
-  ?.addEventListener("submit", function (e) {
-    e.preventDefault();
-    const input = this.querySelector("input");
-    if (input.value.includes("@")) {
-      document.getElementById("newsletterSuccess")?.classList.add("show");
-      input.value = "";
-      setTimeout(
-        () =>
-          document
-            .getElementById("newsletterSuccess")
-            ?.classList.remove("show"),
-        3000,
-      );
-    }
-  });
-
-// ========== SHOP PAGE: ALL PRODUCTS GRID ==========
+// ========== SHOP PAGE: ALL PRODUCTS ==========
 const productsGrid = document.getElementById("productsGrid");
 if (productsGrid) {
   products.forEach((p) => productsGrid.appendChild(createProductCard(p)));
 }
 
-// ========== PRODUCT DETAIL PAGE ==========
 // ========== PRODUCT DETAIL PAGE ==========
 const productDetail = document.getElementById("productDetail");
 if (productDetail) {
@@ -446,7 +344,6 @@ if (productDetail) {
   const id = parseInt(params.get("id"));
   const product = products.find((p) => p.id === id) || products[0];
 
-  // جلب الأسعار والمخزون من بيانات المنتج
   const sizePrices = product.prices || {
     "30ml": Math.round(product.price * 0.7),
     "50ml": product.price,
@@ -454,91 +351,116 @@ if (productDetail) {
   };
   const stock = product.stock || { "30ml": 5, "50ml": 5, "100ml": 5 };
 
-  // تحديد أول مقاس متوفر
-  const availableSizes = Object.keys(stock).filter(s => stock[s] > 0);
-  let selectedSize = availableSizes.includes('30ml') ? '30ml' : availableSizes[0] || '50ml';
+  const availableSizes = Object.keys(stock).filter((s) => stock[s] > 0);
+  let selectedSize = availableSizes.includes("30ml")
+    ? "30ml"
+    : availableSizes[0] || "50ml";
   let selectedPrice = sizePrices[selectedSize];
 
-  // توليد أزرار الأحجام (بدون سعر)
-  const sizeButtonsHTML = Object.keys(sizePrices).map(size => {
-    const isOutOfStock = stock[size] === 0;
-    const disabledAttr = isOutOfStock ? 'disabled' : '';
-    const activeClass = (size === selectedSize && !isOutOfStock) ? 'active' : '';
-    return `
-      <button class="size-btn ${activeClass} ${disabledAttr ? 'disabled' : ''}" 
-              data-size="${size}" ${disabledAttr}>
-          ${size} ${isOutOfStock ? '(Out)' : ''}
-      </button>`;
-  }).join('');
+  // Build size buttons
+  const sizeButtonsHTML = Object.keys(sizePrices)
+    .map((size) => {
+      const isOutOfStock = stock[size] === 0;
+      const disabledAttr = isOutOfStock ? "disabled" : "";
+      const activeClass =
+        size === selectedSize && !isOutOfStock ? "active" : "";
+      return `
+        <button
+          class="size-btn ${activeClass} ${disabledAttr ? "disabled" : ""}"
+          data-size="${size}"
+          ${disabledAttr}
+        >
+          ${size} ${isOutOfStock ? "(Out)" : ""}
+        </button>`;
+    })
+    .join("");
 
-  // بناء واجهة المنتج (بنفس الهيكل السابق تمامًا)
   productDetail.innerHTML = `
     <div class="product-detail-flex">
-        <div class="product-detail-img">
-            <img src="${product.image}" alt="${product.name}" style="width:100%; height:100%; object-fit:cover; border-radius: var(--radius-lg);">
+      <div class="product-detail-img">
+        <img
+          src="${product.image}"
+          alt="${product.name}"
+          style="width:100%; height:100%; object-fit:cover; border-radius: var(--radius-lg);"
+        />
+      </div>
+      <div class="product-detail-info">
+        <h1>${product.name}</h1>
+        <p class="inspired-by">Inspired by ${product.inspired}</p>
+        <p style="color:var(--text-secondary); margin:1rem 0;">
+          ${product.description}
+        </p>
+
+        <div class="size-selector" style="margin:1.5rem 0;">
+          <label style="color:var(--text-secondary); display:block; margin-bottom:0.8rem;">
+            Size:
+          </label>
+          <div style="display:flex; gap:1rem;">
+            ${sizeButtonsHTML}
+          </div>
         </div>
-        <div class="product-detail-info">
-            <h1>${product.name}</h1>
-            <p class="inspired-by">Inspired by ${product.inspired}</p>
-            <p style="color:var(--text-secondary); margin:1rem 0;">${product.description}</p>
-            <div class="stars" style="margin-bottom:1.5rem;">${'★'.repeat(product.rating)}${'☆'.repeat(5 - product.rating)}</div>
 
-            <!-- اختيار الحجم -->
-            <div class="size-selector" style="margin:1.5rem 0;">
-                <label style="color:var(--text-secondary); display:block; margin-bottom:0.8rem;">Size:</label>
-                <div style="display:flex; gap:1rem;">
-                    ${sizeButtonsHTML}
-                </div>
-            </div>
+        <p
+          style="font-size:2rem; color:var(--gold); font-family: var(--font-heading);"
+          id="dynamicPrice"
+        >
+          ${selectedPrice} EGP
+        </p>
 
-            <!-- عرض السعر حسب الحجم المختار -->
-            <p style="font-size:2rem; color:var(--gold); font-family: var(--font-heading);" id="dynamicPrice">
-                ${selectedPrice} EGP
-            </p>
-
-            <div class="quantity-selector" style="margin:1.5rem 0;">
-                <button class="quantity-btn" id="qtyMinus">-</button>
-                <span id="quantityDisplay" style="color:#fff; font-size:1.2rem;">1</span>
-                <button class="quantity-btn" id="qtyPlus">+</button>
-            </div>
-
-            <button class="btn btn-gold" id="addToCartDetail" style="width:100%;">Add to Cart</button>
-            <p id="cartMessage" style="color:#27ae60; margin-top:0.5rem; display:none;">Added to cart!</p>
+        <div class="quantity-selector" style="margin:1.5rem 0;">
+          <button class="quantity-btn" id="qtyMinus">-</button>
+          <span id="quantityDisplay" style="color:#fff; font-size:1.2rem;">1</span>
+          <button class="quantity-btn" id="qtyPlus">+</button>
         </div>
-    </div>
-  `;
+
+        <button class="btn btn-gold" id="addToCartDetail" style="width:100%;">
+          Add to Cart
+        </button>
+        <p id="cartMessage" style="color:#27ae60; margin-top:0.5rem; display:none;">
+          Added to cart!
+        </p>
+      </div>
+    </div>`;
 
   let qty = 1;
 
-  // تفعيل أزرار الأحجام
-  document.querySelectorAll(".size-btn:not(.disabled)").forEach(btn => {
+  // Size selection
+  document.querySelectorAll(".size-btn:not(.disabled)").forEach((btn) => {
     btn.addEventListener("click", () => {
-      document.querySelectorAll(".size-btn").forEach(b => b.classList.remove("active"));
+      document
+        .querySelectorAll(".size-btn")
+        .forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
       selectedSize = btn.dataset.size;
       selectedPrice = sizePrices[selectedSize];
-      document.getElementById("dynamicPrice").textContent = selectedPrice + " EGP";
+      document.getElementById("dynamicPrice").textContent =
+        selectedPrice + " EGP";
     });
   });
 
-  // أزرار الكمية
+  // Quantity controls
   document.getElementById("qtyPlus").addEventListener("click", () => {
     qty++;
     document.getElementById("quantityDisplay").textContent = qty;
   });
+
   document.getElementById("qtyMinus").addEventListener("click", () => {
     if (qty > 1) qty--;
     document.getElementById("quantityDisplay").textContent = qty;
   });
 
-  // الإضافة إلى السلة
+  // Add to cart from detail page
   document.getElementById("addToCartDetail").addEventListener("click", () => {
     if (stock[selectedSize] === 0) {
       alert("This size is out of stock.");
       return;
     }
+
     const cart = JSON.parse(localStorage.getItem("FAKHAMAHCart")) || [];
-    const existing = cart.find(item => item.id === product.id && item.size === selectedSize);
+    const existing = cart.find(
+      (item) => item.id === product.id && item.size === selectedSize,
+    );
+
     if (existing) {
       existing.quantity += qty;
     } else {
@@ -550,67 +472,16 @@ if (productDetail) {
         quantity: qty,
       });
     }
+
     localStorage.setItem("FAKHAMAHCart", JSON.stringify(cart));
+
     const msg = document.getElementById("cartMessage");
     msg.style.display = "block";
     setTimeout(() => (msg.style.display = "none"), 1500);
+
     updateCartCount();
   });
 }
-// ========== CHECKOUT PAGE ==========
-const checkoutContainer = document.getElementById("checkoutContainer");
-if (checkoutContainer) {
-  const renderCheckout = () => {
-    if (cart.length === 0) {
-      checkoutContainer.innerHTML =
-        '<p style="text-align:center;color:var(--text-muted);">Your cart is empty.</p>';
-      return;
-    }
-    let total = cart.reduce((sum, i) => sum + i.price * i.quantity, 0);
-    let itemsHTML = cart
-      .map(
-        (item) => `
-            <div class="cart-item">
-                <span>${item.name} x${item.quantity}</span>
-                <span>${item.price * item.quantity} EGP</span>
-                <button class="remove-item" data-id="${item.id}" style="color:#c0392b;background:none;border:none;cursor:pointer;"><i class="fa-solid fa-trash"></i></button>
-            </div>
-        `,
-      )
-      .join("");
-    checkoutContainer.innerHTML = `
-            <div class="cart-summary">
-                <h3 style="color:var(--gold);">Order Summary</h3>
-                ${itemsHTML}
-                <div style="display:flex;justify-content:space-between;margin-top:1rem;font-weight:bold;"><span>Total</span><span>${total} EGP</span></div>
-            </div>
-            <form class="checkout-form" id="checkoutForm">
-                <input type="text" placeholder="Full Name" required>
-                <input type="tel" placeholder="Phone Number" required>
-                <input type="text" placeholder="Address" required>
-                <textarea placeholder="Order notes (optional)"></textarea>
-                <button type="submit" class="btn btn-gold">Place Order</button>
-            </form>
-        `;
-    document.querySelectorAll(".remove-item").forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        removeFromCart(parseInt(btn.dataset.id));
-        renderCheckout();
-      });
-    });
-    document
-      .getElementById("checkoutForm")
-      .addEventListener("submit", function (e) {
-        e.preventDefault();
-        alert("Order placed! Thank you. (demo)");
-        cart = [];
-        saveCart();
-        updateCartCount();
-        renderCheckout();
-      });
-  };
-  renderCheckout();
-}
-// ========== INIT ==========
+
+// ========== INITIAL CART COUNT ==========
 updateCartCount();
-// ========== || ==========
