@@ -2,7 +2,6 @@
 // FILE: script.js
 // DESCRIPTION: Core functionality for FAKHAMAH
 // ============================================
-
 // ========== GLOBAL STATE ==========
 const products = [
   {
@@ -13,7 +12,7 @@ const products = [
     oldPrice: 400,
     rating: 5,
     discount: "25%",
-    image: "https://i.postimg.cc/fyL3bCjP/jswr.jpg",
+    image: "https://i.postimg.cc/ZR3N2kHZ/Jswr.jpg",
     description: "Tropical fruity notes with warm amber.",
     prices: { "30ml": 315, "50ml": 320, "100ml": 660 },
     stock: { "30ml": 0, "50ml": 10, "100ml": 0 },
@@ -26,7 +25,7 @@ const products = [
     oldPrice: 680,
     rating: 5,
     discount: "23%",
-    image: "https://i.postimg.cc/wvWvnJ8m/Ghsq.jpg",
+    image: "https://i.postimg.cc/XqfwGMBg/Ghsq.jpg",
     description: "Fresh aromatic with deep woody base.",
     prices: { "30ml": 315, "50ml": 320, "100ml": 585 },
     stock: { "30ml": 0, "50ml": 10, "100ml": 0 },
@@ -39,7 +38,7 @@ const products = [
     oldPrice: 750,
     rating: 4,
     discount: "22%",
-    image: "https://i.postimg.cc/fWryKxfP/Nsym.jpg",
+    image: "https://i.postimg.cc/KjDMcnd2/Nsym.jpg",
     description: "Spicy apple with boozy vanilla.",
     prices: { "30ml": 315, "50ml": 320, "100ml": 585 },
     stock: { "30ml": 0, "50ml": 10, "100ml": 0 },
@@ -142,12 +141,12 @@ function createProductCard(product, showAddToCart = true) {
   card.className = "product-card";
   card.innerHTML = `
     <div class="product-img"
-      style="
-        background-image: url('${product.image}');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-      ">
+    style="
+        background-image:url('${product.image}');
+        background-size:cover;
+        background-position:center;
+        background-repeat:no-repeat;
+    ">
     </div>
     <h3>${product.name}</h3>
     <p class="inspired-by">Inspired by ${product.inspired}</p>
@@ -163,27 +162,12 @@ function createProductCard(product, showAddToCart = true) {
     card.querySelector(".btn-add-cart").addEventListener("click", (e) => {
       e.stopPropagation();
       addToCart(product.id);
-
-      const btn = e.target;
-      btn.textContent = "✓ Added!";
-      btn.style.background = "#27ae60";
-      btn.style.borderColor = "#27ae60";
-      btn.style.color = "#fff";
-
-      setTimeout(() => {
-        btn.textContent = "Add to Cart";
-        btn.style.background = "";
-        btn.style.borderColor = "";
-        btn.style.color = "";
-      }, 1500);
     });
   }
 
-  // Navigate to product detail page on card click
   card.addEventListener("click", () => {
     window.location.href = `product.html?id=${product.id}`;
   });
-
   return card;
 }
 
@@ -475,11 +459,22 @@ if (productDetail) {
 
     localStorage.setItem("FAKHAMAHCart", JSON.stringify(cart));
 
+    const countEl = document.getElementById("cartCount");
+    if (countEl) {
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      countEl.textContent = totalItems;
+      countEl.classList.remove("bump");
+      void countEl.offsetWidth;
+      countEl.classList.add("bump");
+    }
+
+    if (typeof updateCartCount === "function") {
+      updateCartCount();
+    }
+
     const msg = document.getElementById("cartMessage");
     msg.style.display = "block";
     setTimeout(() => (msg.style.display = "none"), 1500);
-
-    updateCartCount();
   });
 }
 
